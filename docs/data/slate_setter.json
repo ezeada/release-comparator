@@ -1,0 +1,5411 @@
+{
+  "metadata": {
+    "generated_at": "2026-06-06T00:50:14.636133-07:00",
+    "historical_weekends": 457,
+    "years_covered": [
+      2015,
+      2016,
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024,
+      2025,
+      2026
+    ],
+    "scheduled_wide_releases": 17,
+    "holdover_weeks_assumption": 5,
+    "wide_theater_threshold": 600,
+    "data_quality": {
+      "films_with_genre_pct": 22.0,
+      "films_with_rating_pct": 50.9,
+      "scheduled_with_genre_pct": 100.0,
+      "scheduled_with_rating_pct": 64.7
+    }
+  },
+  "config": {
+    "genres": [
+      "Action",
+      "Adventure",
+      "Animation",
+      "Biography",
+      "Comedy",
+      "Crime",
+      "Documentary",
+      "Drama",
+      "Family",
+      "Fantasy",
+      "History",
+      "Horror",
+      "Music",
+      "Musical",
+      "Mystery",
+      "Romance",
+      "Sci-Fi",
+      "Sport",
+      "Thriller",
+      "War",
+      "Western"
+    ],
+    "ratings": [
+      "G",
+      "PG",
+      "PG-13",
+      "R",
+      "NC-17"
+    ],
+    "weights": {
+      "market_strength": 0.25,
+      "genre_strength": 0.25,
+      "calendar_boost": 0.2,
+      "crowding": 0.15,
+      "audience_overlap": 0.25
+    }
+  },
+  "historical_weekends": [
+    {
+      "friday": "2023-03-10",
+      "week_of_year": 10,
+      "total_gross": 118089113,
+      "wide_release_count": 11
+    },
+    {
+      "friday": "2023-03-17",
+      "week_of_year": 11,
+      "total_gross": 92184348,
+      "wide_release_count": 12
+    },
+    {
+      "friday": "2023-03-24",
+      "week_of_year": 12,
+      "total_gross": 116624505,
+      "wide_release_count": 14
+    },
+    {
+      "friday": "2023-04-07",
+      "week_of_year": 14,
+      "total_gross": 204788826,
+      "wide_release_count": 13
+    },
+    {
+      "friday": "2023-04-14",
+      "week_of_year": 15,
+      "total_gross": 147089361,
+      "wide_release_count": 13
+    },
+    {
+      "friday": "2023-04-21",
+      "week_of_year": 16,
+      "total_gross": 124942668,
+      "wide_release_count": 18
+    },
+    {
+      "friday": "2023-04-28",
+      "week_of_year": 17,
+      "total_gross": 100199383,
+      "wide_release_count": 15
+    },
+    {
+      "friday": "2023-05-05",
+      "week_of_year": 18,
+      "total_gross": 159907355,
+      "wide_release_count": 13
+    },
+    {
+      "friday": "2023-05-12",
+      "week_of_year": 19,
+      "total_gross": 100807312,
+      "wide_release_count": 15
+    },
+    {
+      "friday": "2023-05-19",
+      "week_of_year": 20,
+      "total_gross": 121759667,
+      "wide_release_count": 9
+    },
+    {
+      "friday": "2023-05-26",
+      "week_of_year": 21,
+      "total_gross": 163143062,
+      "wide_release_count": 10
+    },
+    {
+      "friday": "2023-06-02",
+      "week_of_year": 22,
+      "total_gross": 205180410,
+      "wide_release_count": 10
+    },
+    {
+      "friday": "2023-06-09",
+      "week_of_year": 23,
+      "total_gross": 165338293,
+      "wide_release_count": 9
+    },
+    {
+      "friday": "2023-06-16",
+      "week_of_year": 24,
+      "total_gross": 163789499,
+      "wide_release_count": 10
+    },
+    {
+      "friday": "2023-06-23",
+      "week_of_year": 25,
+      "total_gross": 109106332,
+      "wide_release_count": 12
+    },
+    {
+      "friday": "2023-07-07",
+      "week_of_year": 27,
+      "total_gross": 130319426,
+      "wide_release_count": 15
+    },
+    {
+      "friday": "2023-07-14",
+      "week_of_year": 28,
+      "total_gross": 140477074,
+      "wide_release_count": 14
+    },
+    {
+      "friday": "2023-07-21",
+      "week_of_year": 29,
+      "total_gross": 310952297,
+      "wide_release_count": 11
+    },
+    {
+      "friday": "2023-07-28",
+      "week_of_year": 30,
+      "total_gross": 213643074,
+      "wide_release_count": 10
+    },
+    {
+      "friday": "2023-08-04",
+      "week_of_year": 31,
+      "total_gross": 176729294,
+      "wide_release_count": 11
+    },
+    {
+      "friday": "2023-08-11",
+      "week_of_year": 32,
+      "total_gross": 111923170,
+      "wide_release_count": 12
+    },
+    {
+      "friday": "2023-08-18",
+      "week_of_year": 33,
+      "total_gross": 97390629,
+      "wide_release_count": 13
+    },
+    {
+      "friday": "2023-08-25",
+      "week_of_year": 34,
+      "total_gross": 90934182,
+      "wide_release_count": 18
+    },
+    {
+      "friday": "2023-09-01",
+      "week_of_year": 35,
+      "total_gross": 89234435,
+      "wide_release_count": 18
+    },
+    {
+      "friday": "2023-09-08",
+      "week_of_year": 36,
+      "total_gross": 88384497,
+      "wide_release_count": 17
+    },
+    {
+      "friday": "2023-09-15",
+      "week_of_year": 37,
+      "total_gross": 62797562,
+      "wide_release_count": 18
+    },
+    {
+      "friday": "2023-09-22",
+      "week_of_year": 38,
+      "total_gross": 52149390,
+      "wide_release_count": 18
+    },
+    {
+      "friday": "2023-10-06",
+      "week_of_year": 40,
+      "total_gross": 72982298,
+      "wide_release_count": 14
+    },
+    {
+      "friday": "2023-10-13",
+      "week_of_year": 41,
+      "total_gross": 132931334,
+      "wide_release_count": 15
+    },
+    {
+      "friday": "2023-10-20",
+      "week_of_year": 42,
+      "total_gross": 84171424,
+      "wide_release_count": 13
+    },
+    {
+      "friday": "2023-10-27",
+      "week_of_year": 43,
+      "total_gross": 126269880,
+      "wide_release_count": 14
+    },
+    {
+      "friday": "2023-11-03",
+      "week_of_year": 44,
+      "total_gross": 63146478,
+      "wide_release_count": 14
+    },
+    {
+      "friday": "2023-11-10",
+      "week_of_year": 45,
+      "total_gross": 87494031,
+      "wide_release_count": 16
+    },
+    {
+      "friday": "2023-11-17",
+      "week_of_year": 46,
+      "total_gross": 115500888,
+      "wide_release_count": 12
+    },
+    {
+      "friday": "2023-11-24",
+      "week_of_year": 47,
+      "total_gross": 115988162,
+      "wide_release_count": 14
+    },
+    {
+      "friday": "2023-12-01",
+      "week_of_year": 48,
+      "total_gross": 97128796,
+      "wide_release_count": 17
+    },
+    {
+      "friday": "2023-12-08",
+      "week_of_year": 49,
+      "total_gross": 70426430,
+      "wide_release_count": 21
+    },
+    {
+      "friday": "2023-12-15",
+      "week_of_year": 50,
+      "total_gross": 75934187,
+      "wide_release_count": 15
+    },
+    {
+      "friday": "2023-12-22",
+      "week_of_year": 51,
+      "total_gross": 94549000,
+      "wide_release_count": 14
+    },
+    {
+      "friday": "2023-12-29",
+      "week_of_year": 52,
+      "total_gross": 112880386,
+      "wide_release_count": 15
+    },
+    {
+      "friday": "2024-03-08",
+      "week_of_year": 10,
+      "total_gross": 136118619,
+      "wide_release_count": 16
+    },
+    {
+      "friday": "2024-03-15",
+      "week_of_year": 11,
+      "total_gross": 87881323,
+      "wide_release_count": 14
+    },
+    {
+      "friday": "2024-03-22",
+      "week_of_year": 12,
+      "total_gross": 103692296,
+      "wide_release_count": 14
+    },
+    {
+      "friday": "2024-03-29",
+      "week_of_year": 13,
+      "total_gross": 137203699,
+      "wide_release_count": 13
+    },
+    {
+      "friday": "2024-04-05",
+      "week_of_year": 14,
+      "total_gross": 85541433,
+      "wide_release_count": 14
+    },
+    {
+      "friday": "2024-04-12",
+      "week_of_year": 15,
+      "total_gross": 75249789,
+      "wide_release_count": 17
+    },
+    {
+      "friday": "2024-04-19",
+      "week_of_year": 16,
+      "total_gross": 65778173,
+      "wide_release_count": 15
+    },
+    {
+      "friday": "2024-04-26",
+      "week_of_year": 17,
+      "total_gross": 64117270,
+      "wide_release_count": 15
+    },
+    {
+      "friday": "2024-05-03",
+      "week_of_year": 18,
+      "total_gross": 73900960,
+      "wide_release_count": 14
+    },
+    {
+      "friday": "2024-05-10",
+      "week_of_year": 19,
+      "total_gross": 96092237,
+      "wide_release_count": 13
+    },
+    {
+      "friday": "2024-05-17",
+      "week_of_year": 20,
+      "total_gross": 96479518,
+      "wide_release_count": 13
+    },
+    {
+      "friday": "2024-05-24",
+      "week_of_year": 21,
+      "total_gross": 101768364,
+      "wide_release_count": 11
+    },
+    {
+      "friday": "2024-06-07",
+      "week_of_year": 23,
+      "total_gross": 104268319,
+      "wide_release_count": 15
+    },
+    {
+      "friday": "2024-06-14",
+      "week_of_year": 24,
+      "total_gross": 213933770,
+      "wide_release_count": 13
+    },
+    {
+      "friday": "2024-06-21",
+      "week_of_year": 25,
+      "total_gross": 153656712,
+      "wide_release_count": 12
+    },
+    {
+      "friday": "2024-06-28",
+      "week_of_year": 26,
+      "total_gross": 154286054,
+      "wide_release_count": 14
+    },
+    {
+      "friday": "2024-07-05",
+      "week_of_year": 27,
+      "total_gross": 156145120,
+      "wide_release_count": 15
+    },
+    {
+      "friday": "2024-07-12",
+      "week_of_year": 28,
+      "total_gross": 123043838,
+      "wide_release_count": 13
+    },
+    {
+      "friday": "2024-07-19",
+      "week_of_year": 29,
+      "total_gross": 149488423,
+      "wide_release_count": 13
+    },
+    {
+      "friday": "2024-07-26",
+      "week_of_year": 30,
+      "total_gross": 284850131,
+      "wide_release_count": 9
+    },
+    {
+      "friday": "2024-08-02",
+      "week_of_year": 31,
+      "total_gross": 170287396,
+      "wide_release_count": 11
+    },
+    {
+      "friday": "2024-08-09",
+      "week_of_year": 32,
+      "total_gross": 157697367,
+      "wide_release_count": 10
+    },
+    {
+      "friday": "2024-08-16",
+      "week_of_year": 33,
+      "total_gross": 140429047,
+      "wide_release_count": 16
+    },
+    {
+      "friday": "2024-08-23",
+      "week_of_year": 34,
+      "total_gross": 88824353,
+      "wide_release_count": 15
+    },
+    {
+      "friday": "2024-09-06",
+      "week_of_year": 36,
+      "total_gross": 147573768,
+      "wide_release_count": 14
+    },
+    {
+      "friday": "2024-09-13",
+      "week_of_year": 37,
+      "total_gross": 93734642,
+      "wide_release_count": 16
+    },
+    {
+      "friday": "2024-09-20",
+      "week_of_year": 38,
+      "total_gross": 81812467,
+      "wide_release_count": 16
+    },
+    {
+      "friday": "2024-09-27",
+      "week_of_year": 39,
+      "total_gross": 93033195,
+      "wide_release_count": 18
+    },
+    {
+      "friday": "2024-10-04",
+      "week_of_year": 40,
+      "total_gross": 88370805,
+      "wide_release_count": 13
+    },
+    {
+      "friday": "2024-10-11",
+      "week_of_year": 41,
+      "total_gross": 73061269,
+      "wide_release_count": 14
+    },
+    {
+      "friday": "2024-10-18",
+      "week_of_year": 42,
+      "total_gross": 68762943,
+      "wide_release_count": 18
+    },
+    {
+      "friday": "2024-10-25",
+      "week_of_year": 43,
+      "total_gross": 93918456,
+      "wide_release_count": 17
+    },
+    {
+      "friday": "2024-11-01",
+      "week_of_year": 44,
+      "total_gross": 71671598,
+      "wide_release_count": 16
+    },
+    {
+      "friday": "2024-11-08",
+      "week_of_year": 45,
+      "total_gross": 68884541,
+      "wide_release_count": 17
+    },
+    {
+      "friday": "2024-11-15",
+      "week_of_year": 46,
+      "total_gross": 69892245,
+      "wide_release_count": 13
+    },
+    {
+      "friday": "2024-11-22",
+      "week_of_year": 47,
+      "total_gross": 202433845,
+      "wide_release_count": 11
+    },
+    {
+      "friday": "2024-12-06",
+      "week_of_year": 49,
+      "total_gross": 137239986,
+      "wide_release_count": 14
+    },
+    {
+      "friday": "2024-12-13",
+      "week_of_year": 50,
+      "total_gross": 94203336,
+      "wide_release_count": 15
+    },
+    {
+      "friday": "2024-12-20",
+      "week_of_year": 51,
+      "total_gross": 142285600,
+      "wide_release_count": 10
+    },
+    {
+      "friday": "2024-12-27",
+      "week_of_year": 52,
+      "total_gross": 170551066,
+      "wide_release_count": 12
+    },
+    {
+      "friday": "2025-03-07",
+      "week_of_year": 10,
+      "total_gross": 55891995,
+      "wide_release_count": 18
+    },
+    {
+      "friday": "2025-03-14",
+      "week_of_year": 11,
+      "total_gross": 52196600,
+      "wide_release_count": 17
+    },
+    {
+      "friday": "2025-03-21",
+      "week_of_year": 12,
+      "total_gross": 74759363,
+      "wide_release_count": 17
+    },
+    {
+      "friday": "2025-03-28",
+      "week_of_year": 13,
+      "total_gross": 77682230,
+      "wide_release_count": 18
+    },
+    {
+      "friday": "2025-04-04",
+      "week_of_year": 14,
+      "total_gross": 202439396,
+      "wide_release_count": 15
+    },
+    {
+      "friday": "2025-04-11",
+      "week_of_year": 15,
+      "total_gross": 148268683,
+      "wide_release_count": 14
+    },
+    {
+      "friday": "2025-04-18",
+      "week_of_year": 16,
+      "total_gross": 135751407,
+      "wide_release_count": 14
+    },
+    {
+      "friday": "2025-04-25",
+      "week_of_year": 17,
+      "total_gross": 146688127,
+      "wide_release_count": 16
+    },
+    {
+      "friday": "2025-05-02",
+      "week_of_year": 18,
+      "total_gross": 144275629,
+      "wide_release_count": 11
+    },
+    {
+      "friday": "2025-05-09",
+      "week_of_year": 19,
+      "total_gross": 84033068,
+      "wide_release_count": 13
+    },
+    {
+      "friday": "2025-05-16",
+      "week_of_year": 20,
+      "total_gross": 104774915,
+      "wide_release_count": 12
+    },
+    {
+      "friday": "2025-05-23",
+      "week_of_year": 21,
+      "total_gross": 264046718,
+      "wide_release_count": 10
+    },
+    {
+      "friday": "2025-06-06",
+      "week_of_year": 23,
+      "total_gross": 112792328,
+      "wide_release_count": 14
+    },
+    {
+      "friday": "2025-06-13",
+      "week_of_year": 24,
+      "total_gross": 153688080,
+      "wide_release_count": 16
+    },
+    {
+      "friday": "2025-06-20",
+      "week_of_year": 25,
+      "total_gross": 125374734,
+      "wide_release_count": 12
+    },
+    {
+      "friday": "2025-06-27",
+      "week_of_year": 26,
+      "total_gross": 127368091,
+      "wide_release_count": 11
+    },
+    {
+      "friday": "2025-07-04",
+      "week_of_year": 27,
+      "total_gross": 155569900,
+      "wide_release_count": 11
+    },
+    {
+      "friday": "2025-07-11",
+      "week_of_year": 28,
+      "total_gross": 201176051,
+      "wide_release_count": 9
+    },
+    {
+      "friday": "2025-07-18",
+      "week_of_year": 29,
+      "total_gross": 134199081,
+      "wide_release_count": 12
+    },
+    {
+      "friday": "2025-07-25",
+      "week_of_year": 30,
+      "total_gross": 185393168,
+      "wide_release_count": 13
+    },
+    {
+      "friday": "2025-08-01",
+      "week_of_year": 31,
+      "total_gross": 119907058,
+      "wide_release_count": 10
+    },
+    {
+      "friday": "2025-08-08",
+      "week_of_year": 32,
+      "total_gross": 131243011,
+      "wide_release_count": 14
+    },
+    {
+      "friday": "2025-08-15",
+      "week_of_year": 33,
+      "total_gross": 90734949,
+      "wide_release_count": 16
+    },
+    {
+      "friday": "2025-08-22",
+      "week_of_year": 34,
+      "total_gross": 78648517,
+      "wide_release_count": 20
+    },
+    {
+      "friday": "2025-08-29",
+      "week_of_year": 35,
+      "total_gross": 64421552,
+      "wide_release_count": 17
+    },
+    {
+      "friday": "2025-09-05",
+      "week_of_year": 36,
+      "total_gross": 124595574,
+      "wide_release_count": 17
+    },
+    {
+      "friday": "2025-09-12",
+      "week_of_year": 37,
+      "total_gross": 147356801,
+      "wide_release_count": 15
+    },
+    {
+      "friday": "2025-09-19",
+      "week_of_year": 38,
+      "total_gross": 73773926,
+      "wide_release_count": 16
+    },
+    {
+      "friday": "2025-09-26",
+      "week_of_year": 39,
+      "total_gross": 74557176,
+      "wide_release_count": 15
+    },
+    {
+      "friday": "2025-10-03",
+      "week_of_year": 40,
+      "total_gross": 81846953,
+      "wide_release_count": 17
+    },
+    {
+      "friday": "2025-10-10",
+      "week_of_year": 41,
+      "total_gross": 70235113,
+      "wide_release_count": 15
+    },
+    {
+      "friday": "2025-10-17",
+      "week_of_year": 42,
+      "total_gross": 67872348,
+      "wide_release_count": 17
+    },
+    {
+      "friday": "2025-10-24",
+      "week_of_year": 43,
+      "total_gross": 75771316,
+      "wide_release_count": 17
+    },
+    {
+      "friday": "2025-11-07",
+      "week_of_year": 45,
+      "total_gross": 81417463,
+      "wide_release_count": 18
+    },
+    {
+      "friday": "2025-11-14",
+      "week_of_year": 46,
+      "total_gross": 74011992,
+      "wide_release_count": 17
+    },
+    {
+      "friday": "2025-11-21",
+      "week_of_year": 47,
+      "total_gross": 182169091,
+      "wide_release_count": 11
+    },
+    {
+      "friday": "2025-11-28",
+      "week_of_year": 48,
+      "total_gross": 188718077,
+      "wide_release_count": 10
+    },
+    {
+      "friday": "2025-12-05",
+      "week_of_year": 49,
+      "total_gross": 156255746,
+      "wide_release_count": 14
+    },
+    {
+      "friday": "2025-12-12",
+      "week_of_year": 50,
+      "total_gross": 76568396,
+      "wide_release_count": 14
+    },
+    {
+      "friday": "2025-12-19",
+      "week_of_year": 51,
+      "total_gross": 179333118,
+      "wide_release_count": 12
+    },
+    {
+      "friday": "2025-12-26",
+      "week_of_year": 52,
+      "total_gross": 173348116,
+      "wide_release_count": 10
+    },
+    {
+      "friday": "2026-03-06",
+      "week_of_year": 10,
+      "total_gross": 95875635,
+      "wide_release_count": 17
+    },
+    {
+      "friday": "2026-03-13",
+      "week_of_year": 11,
+      "total_gross": 84274152,
+      "wide_release_count": 16
+    },
+    {
+      "friday": "2026-03-20",
+      "week_of_year": 12,
+      "total_gross": 141923048,
+      "wide_release_count": 13
+    },
+    {
+      "friday": "2026-03-27",
+      "week_of_year": 13,
+      "total_gross": 97401546,
+      "wide_release_count": 14
+    },
+    {
+      "friday": "2026-04-03",
+      "week_of_year": 14,
+      "total_gross": 199325067,
+      "wide_release_count": 13
+    },
+    {
+      "friday": "2026-04-10",
+      "week_of_year": 15,
+      "total_gross": 126964992,
+      "wide_release_count": 14
+    },
+    {
+      "friday": "2026-04-17",
+      "week_of_year": 16,
+      "total_gross": 95088663,
+      "wide_release_count": 13
+    },
+    {
+      "friday": "2026-04-24",
+      "week_of_year": 17,
+      "total_gross": 152391546,
+      "wide_release_count": 15
+    },
+    {
+      "friday": "2026-05-01",
+      "week_of_year": 18,
+      "total_gross": 172970858,
+      "wide_release_count": 13
+    },
+    {
+      "friday": "2026-05-08",
+      "week_of_year": 19,
+      "total_gross": 160476042,
+      "wide_release_count": 12
+    },
+    {
+      "friday": "2026-05-15",
+      "week_of_year": 20,
+      "total_gross": 108263323,
+      "wide_release_count": 14
+    },
+    {
+      "friday": "2026-05-22",
+      "week_of_year": 21,
+      "total_gross": 177526768,
+      "wide_release_count": 13
+    },
+    {
+      "friday": "2026-05-29",
+      "week_of_year": 22,
+      "total_gross": 180408020,
+      "wide_release_count": 14
+    },
+    {
+      "friday": "2015-03-06",
+      "week_of_year": 10,
+      "total_gross": 89415791,
+      "wide_release_count": 17
+    },
+    {
+      "friday": "2015-03-13",
+      "week_of_year": 11,
+      "total_gross": 131677520,
+      "wide_release_count": 15
+    },
+    {
+      "friday": "2015-03-20",
+      "week_of_year": 12,
+      "total_gross": 130961022,
+      "wide_release_count": 16
+    },
+    {
+      "friday": "2015-03-27",
+      "week_of_year": 13,
+      "total_gross": 150316547,
+      "wide_release_count": 17
+    },
+    {
+      "friday": "2015-04-03",
+      "week_of_year": 14,
+      "total_gross": 224366628,
+      "wide_release_count": 14
+    },
+    {
+      "friday": "2015-04-10",
+      "week_of_year": 15,
+      "total_gross": 131496504,
+      "wide_release_count": 13
+    },
+    {
+      "friday": "2015-04-17",
+      "week_of_year": 16,
+      "total_gross": 119720998,
+      "wide_release_count": 14
+    },
+    {
+      "friday": "2015-04-24",
+      "week_of_year": 17,
+      "total_gross": 97392898,
+      "wide_release_count": 15
+    },
+    {
+      "friday": "2015-05-01",
+      "week_of_year": 18,
+      "total_gross": 232873431,
+      "wide_release_count": 14
+    },
+    {
+      "friday": "2015-05-08",
+      "week_of_year": 19,
+      "total_gross": 131347747,
+      "wide_release_count": 16
+    },
+    {
+      "friday": "2015-05-15",
+      "week_of_year": 20,
+      "total_gross": 184554442,
+      "wide_release_count": 14
+    },
+    {
+      "friday": "2015-05-22",
+      "week_of_year": 21,
+      "total_gross": 154080020,
+      "wide_release_count": 13
+    },
+    {
+      "friday": "2015-05-29",
+      "week_of_year": 22,
+      "total_gross": 138472506,
+      "wide_release_count": 13
+    },
+    {
+      "friday": "2015-06-05",
+      "week_of_year": 23,
+      "total_gross": 132771309,
+      "wide_release_count": 12
+    },
+    {
+      "friday": "2015-06-12",
+      "week_of_year": 24,
+      "total_gross": 273785662,
+      "wide_release_count": 11
+    },
+    {
+      "friday": "2015-06-19",
+      "week_of_year": 25,
+      "total_gross": 248039944,
+      "wide_release_count": 12
+    },
+    {
+      "friday": "2015-06-26",
+      "week_of_year": 26,
+      "total_gross": 184089868,
+      "wide_release_count": 13
+    },
+    {
+      "friday": "2015-07-03",
+      "week_of_year": 27,
+      "total_gross": 135328419,
+      "wide_release_count": 11
+    },
+    {
+      "friday": "2015-07-10",
+      "week_of_year": 28,
+      "total_gross": 215076951,
+      "wide_release_count": 11
+    },
+    {
+      "friday": "2015-07-17",
+      "week_of_year": 29,
+      "total_gross": 193925542,
+      "wide_release_count": 12
+    },
+    {
+      "friday": "2015-07-24",
+      "week_of_year": 30,
+      "total_gross": 151040028,
+      "wide_release_count": 15
+    },
+    {
+      "friday": "2015-08-07",
+      "week_of_year": 32,
+      "total_gross": 131916514,
+      "wide_release_count": 16
+    },
+    {
+      "friday": "2015-08-14",
+      "week_of_year": 33,
+      "total_gross": 148106885,
+      "wide_release_count": 15
+    },
+    {
+      "friday": "2015-08-21",
+      "week_of_year": 34,
+      "total_gross": 106631353,
+      "wide_release_count": 17
+    },
+    {
+      "friday": "2015-08-28",
+      "week_of_year": 35,
+      "total_gross": 87836416,
+      "wide_release_count": 22
+    },
+    {
+      "friday": "2015-09-04",
+      "week_of_year": 36,
+      "total_gross": 90555329,
+      "wide_release_count": 24
+    },
+    {
+      "friday": "2015-09-11",
+      "week_of_year": 37,
+      "total_gross": 102512365,
+      "wide_release_count": 24
+    },
+    {
+      "friday": "2015-09-18",
+      "week_of_year": 38,
+      "total_gross": 112827167,
+      "wide_release_count": 22
+    },
+    {
+      "friday": "2015-09-25",
+      "week_of_year": 39,
+      "total_gross": 137820669,
+      "wide_release_count": 15
+    },
+    {
+      "friday": "2015-10-02",
+      "week_of_year": 40,
+      "total_gross": 149772643,
+      "wide_release_count": 12
+    },
+    {
+      "friday": "2015-10-09",
+      "week_of_year": 41,
+      "total_gross": 118992658,
+      "wide_release_count": 13
+    },
+    {
+      "friday": "2015-10-16",
+      "week_of_year": 42,
+      "total_gross": 121579792,
+      "wide_release_count": 15
+    },
+    {
+      "friday": "2015-10-23",
+      "week_of_year": 43,
+      "total_gross": 105775731,
+      "wide_release_count": 15
+    },
+    {
+      "friday": "2015-11-06",
+      "week_of_year": 45,
+      "total_gross": 161918615,
+      "wide_release_count": 15
+    },
+    {
+      "friday": "2015-11-13",
+      "week_of_year": 46,
+      "total_gross": 108047802,
+      "wide_release_count": 14
+    },
+    {
+      "friday": "2015-11-20",
+      "week_of_year": 47,
+      "total_gross": 173610096,
+      "wide_release_count": 13
+    },
+    {
+      "friday": "2015-11-27",
+      "week_of_year": 48,
+      "total_gross": 182526007,
+      "wide_release_count": 16
+    },
+    {
+      "friday": "2015-12-04",
+      "week_of_year": 49,
+      "total_gross": 97833704,
+      "wide_release_count": 15
+    },
+    {
+      "friday": "2015-12-11",
+      "week_of_year": 50,
+      "total_gross": 77446378,
+      "wide_release_count": 14
+    },
+    {
+      "friday": "2015-12-18",
+      "week_of_year": 51,
+      "total_gross": 313284961,
+      "wide_release_count": 13
+    },
+    {
+      "friday": "2015-12-25",
+      "week_of_year": 52,
+      "total_gross": 296447415,
+      "wide_release_count": 13
+    },
+    {
+      "friday": "2016-03-04",
+      "week_of_year": 9,
+      "total_gross": 161499059,
+      "wide_release_count": 16
+    },
+    {
+      "friday": "2016-03-11",
+      "week_of_year": 10,
+      "total_gross": 135301106,
+      "wide_release_count": 19
+    },
+    {
+      "friday": "2016-03-18",
+      "week_of_year": 11,
+      "total_gross": 131307311,
+      "wide_release_count": 16
+    },
+    {
+      "friday": "2016-03-25",
+      "week_of_year": 12,
+      "total_gross": 252300615,
+      "wide_release_count": 12
+    },
+    {
+      "friday": "2016-04-01",
+      "week_of_year": 13,
+      "total_gross": 130889005,
+      "wide_release_count": 14
+    },
+    {
+      "friday": "2016-04-08",
+      "week_of_year": 14,
+      "total_gross": 105246691,
+      "wide_release_count": 15
+    },
+    {
+      "friday": "2016-04-15",
+      "week_of_year": 15,
+      "total_gross": 176691491,
+      "wide_release_count": 16
+    },
+    {
+      "friday": "2016-04-22",
+      "week_of_year": 16,
+      "total_gross": 128304144,
+      "wide_release_count": 12
+    },
+    {
+      "friday": "2016-05-06",
+      "week_of_year": 18,
+      "total_gross": 239468632,
+      "wide_release_count": 11
+    },
+    {
+      "friday": "2016-05-13",
+      "week_of_year": 19,
+      "total_gross": 130908594,
+      "wide_release_count": 14
+    },
+    {
+      "friday": "2016-05-20",
+      "week_of_year": 20,
+      "total_gross": 137158400,
+      "wide_release_count": 13
+    },
+    {
+      "friday": "2016-05-27",
+      "week_of_year": 21,
+      "total_gross": 164137607,
+      "wide_release_count": 9
+    },
+    {
+      "friday": "2016-06-03",
+      "week_of_year": 22,
+      "total_gross": 135001702,
+      "wide_release_count": 12
+    },
+    {
+      "friday": "2016-06-10",
+      "week_of_year": 23,
+      "total_gross": 152792949,
+      "wide_release_count": 15
+    },
+    {
+      "friday": "2016-06-17",
+      "week_of_year": 24,
+      "total_gross": 233178561,
+      "wide_release_count": 12
+    },
+    {
+      "friday": "2016-06-24",
+      "week_of_year": 25,
+      "total_gross": 188682746,
+      "wide_release_count": 13
+    },
+    {
+      "friday": "2016-07-01",
+      "week_of_year": 26,
+      "total_gross": 190593683,
+      "wide_release_count": 13
+    },
+    {
+      "friday": "2016-07-08",
+      "week_of_year": 27,
+      "total_gross": 217491665,
+      "wide_release_count": 13
+    },
+    {
+      "friday": "2016-07-15",
+      "week_of_year": 28,
+      "total_gross": 163103247,
+      "wide_release_count": 11
+    },
+    {
+      "friday": "2016-07-22",
+      "week_of_year": 29,
+      "total_gross": 196083640,
+      "wide_release_count": 14
+    },
+    {
+      "friday": "2016-07-29",
+      "week_of_year": 30,
+      "total_gross": 190037811,
+      "wide_release_count": 14
+    },
+    {
+      "friday": "2016-08-05",
+      "week_of_year": 31,
+      "total_gross": 228766438,
+      "wide_release_count": 14
+    },
+    {
+      "friday": "2016-08-12",
+      "week_of_year": 32,
+      "total_gross": 172300640,
+      "wide_release_count": 14
+    },
+    {
+      "friday": "2016-08-19",
+      "week_of_year": 33,
+      "total_gross": 132091889,
+      "wide_release_count": 16
+    },
+    {
+      "friday": "2016-08-26",
+      "week_of_year": 34,
+      "total_gross": 117321334,
+      "wide_release_count": 17
+    },
+    {
+      "friday": "2016-09-02",
+      "week_of_year": 35,
+      "total_gross": 100107664,
+      "wide_release_count": 22
+    },
+    {
+      "friday": "2016-09-09",
+      "week_of_year": 36,
+      "total_gross": 100847907,
+      "wide_release_count": 21
+    },
+    {
+      "friday": "2016-09-16",
+      "week_of_year": 37,
+      "total_gross": 90021653,
+      "wide_release_count": 20
+    },
+    {
+      "friday": "2016-09-23",
+      "week_of_year": 38,
+      "total_gross": 104137992,
+      "wide_release_count": 17
+    },
+    {
+      "friday": "2016-10-07",
+      "week_of_year": 40,
+      "total_gross": 104318304,
+      "wide_release_count": 16
+    },
+    {
+      "friday": "2016-10-14",
+      "week_of_year": 41,
+      "total_gross": 98992813,
+      "wide_release_count": 15
+    },
+    {
+      "friday": "2016-10-21",
+      "week_of_year": 42,
+      "total_gross": 125010284,
+      "wide_release_count": 16
+    },
+    {
+      "friday": "2016-10-28",
+      "week_of_year": 43,
+      "total_gross": 88827696,
+      "wide_release_count": 14
+    },
+    {
+      "friday": "2016-11-04",
+      "week_of_year": 44,
+      "total_gross": 191568495,
+      "wide_release_count": 13
+    },
+    {
+      "friday": "2016-11-11",
+      "week_of_year": 45,
+      "total_gross": 158440850,
+      "wide_release_count": 13
+    },
+    {
+      "friday": "2016-11-18",
+      "week_of_year": 46,
+      "total_gross": 157984223,
+      "wide_release_count": 15
+    },
+    {
+      "friday": "2016-11-25",
+      "week_of_year": 47,
+      "total_gross": 184385596,
+      "wide_release_count": 14
+    },
+    {
+      "friday": "2016-12-02",
+      "week_of_year": 48,
+      "total_gross": 95805897,
+      "wide_release_count": 15
+    },
+    {
+      "friday": "2016-12-09",
+      "week_of_year": 49,
+      "total_gross": 83717240,
+      "wide_release_count": 15
+    },
+    {
+      "friday": "2016-12-16",
+      "week_of_year": 50,
+      "total_gross": 211583035,
+      "wide_release_count": 14
+    },
+    {
+      "friday": "2016-12-23",
+      "week_of_year": 51,
+      "total_gross": 181350322,
+      "wide_release_count": 12
+    },
+    {
+      "friday": "2017-03-10",
+      "week_of_year": 10,
+      "total_gross": 163997836,
+      "wide_release_count": 18
+    },
+    {
+      "friday": "2017-03-17",
+      "week_of_year": 11,
+      "total_gross": 260823456,
+      "wide_release_count": 13
+    },
+    {
+      "friday": "2017-03-24",
+      "week_of_year": 12,
+      "total_gross": 202066084,
+      "wide_release_count": 11
+    },
+    {
+      "friday": "2017-04-07",
+      "week_of_year": 14,
+      "total_gross": 120077853,
+      "wide_release_count": 14
+    },
+    {
+      "friday": "2017-04-14",
+      "week_of_year": 15,
+      "total_gross": 168607242,
+      "wide_release_count": 15
+    },
+    {
+      "friday": "2017-04-21",
+      "week_of_year": 16,
+      "total_gross": 107650168,
+      "wide_release_count": 20
+    },
+    {
+      "friday": "2017-04-28",
+      "week_of_year": 17,
+      "total_gross": 99778230,
+      "wide_release_count": 20
+    },
+    {
+      "friday": "2017-05-05",
+      "week_of_year": 18,
+      "total_gross": 195098085,
+      "wide_release_count": 15
+    },
+    {
+      "friday": "2017-05-12",
+      "week_of_year": 19,
+      "total_gross": 136001326,
+      "wide_release_count": 12
+    },
+    {
+      "friday": "2017-05-19",
+      "week_of_year": 20,
+      "total_gross": 124441368,
+      "wide_release_count": 14
+    },
+    {
+      "friday": "2017-05-26",
+      "week_of_year": 21,
+      "total_gross": 142341187,
+      "wide_release_count": 12
+    },
+    {
+      "friday": "2017-06-02",
+      "week_of_year": 22,
+      "total_gross": 185842459,
+      "wide_release_count": 11
+    },
+    {
+      "friday": "2017-06-09",
+      "week_of_year": 23,
+      "total_gross": 144176376,
+      "wide_release_count": 13
+    },
+    {
+      "friday": "2017-06-16",
+      "week_of_year": 24,
+      "total_gross": 190580340,
+      "wide_release_count": 12
+    },
+    {
+      "friday": "2017-06-23",
+      "week_of_year": 25,
+      "total_gross": 140826843,
+      "wide_release_count": 13
+    },
+    {
+      "friday": "2017-07-07",
+      "week_of_year": 27,
+      "total_gross": 206488903,
+      "wide_release_count": 12
+    },
+    {
+      "friday": "2017-07-14",
+      "week_of_year": 28,
+      "total_gross": 163324876,
+      "wide_release_count": 12
+    },
+    {
+      "friday": "2017-07-21",
+      "week_of_year": 29,
+      "total_gross": 180801251,
+      "wide_release_count": 12
+    },
+    {
+      "friday": "2017-07-28",
+      "week_of_year": 30,
+      "total_gross": 144397313,
+      "wide_release_count": 13
+    },
+    {
+      "friday": "2017-08-04",
+      "week_of_year": 31,
+      "total_gross": 122787940,
+      "wide_release_count": 14
+    },
+    {
+      "friday": "2017-08-11",
+      "week_of_year": 32,
+      "total_gross": 116913742,
+      "wide_release_count": 17
+    },
+    {
+      "friday": "2017-08-18",
+      "week_of_year": 33,
+      "total_gross": 96486715,
+      "wide_release_count": 19
+    },
+    {
+      "friday": "2017-08-25",
+      "week_of_year": 34,
+      "total_gross": 69312122,
+      "wide_release_count": 23
+    },
+    {
+      "friday": "2017-09-01",
+      "week_of_year": 35,
+      "total_gross": 77634434,
+      "wide_release_count": 26
+    },
+    {
+      "friday": "2017-09-08",
+      "week_of_year": 36,
+      "total_gross": 164044803,
+      "wide_release_count": 23
+    },
+    {
+      "friday": "2017-09-15",
+      "week_of_year": 37,
+      "total_gross": 112222203,
+      "wide_release_count": 19
+    },
+    {
+      "friday": "2017-09-22",
+      "week_of_year": 38,
+      "total_gross": 117918784,
+      "wide_release_count": 13
+    },
+    {
+      "friday": "2017-10-06",
+      "week_of_year": 40,
+      "total_gross": 105557205,
+      "wide_release_count": 14
+    },
+    {
+      "friday": "2017-10-13",
+      "week_of_year": 41,
+      "total_gross": 100461379,
+      "wide_release_count": 15
+    },
+    {
+      "friday": "2017-10-20",
+      "week_of_year": 42,
+      "total_gross": 95980741,
+      "wide_release_count": 17
+    },
+    {
+      "friday": "2017-10-27",
+      "week_of_year": 43,
+      "total_gross": 76856088,
+      "wide_release_count": 20
+    },
+    {
+      "friday": "2017-11-03",
+      "week_of_year": 44,
+      "total_gross": 180275276,
+      "wide_release_count": 20
+    },
+    {
+      "friday": "2017-11-10",
+      "week_of_year": 45,
+      "total_gross": 151562937,
+      "wide_release_count": 19
+    },
+    {
+      "friday": "2017-11-17",
+      "week_of_year": 46,
+      "total_gross": 199223159,
+      "wide_release_count": 9
+    },
+    {
+      "friday": "2017-11-24",
+      "week_of_year": 47,
+      "total_gross": 188835224,
+      "wide_release_count": 12
+    },
+    {
+      "friday": "2017-12-01",
+      "week_of_year": 48,
+      "total_gross": 105270560,
+      "wide_release_count": 13
+    },
+    {
+      "friday": "2017-12-08",
+      "week_of_year": 49,
+      "total_gross": 84873861,
+      "wide_release_count": 15
+    },
+    {
+      "friday": "2017-12-15",
+      "week_of_year": 50,
+      "total_gross": 278067957,
+      "wide_release_count": 14
+    },
+    {
+      "friday": "2017-12-22",
+      "week_of_year": 51,
+      "total_gross": 178168406,
+      "wide_release_count": 15
+    },
+    {
+      "friday": "2017-12-29",
+      "week_of_year": 52,
+      "total_gross": 194096602,
+      "wide_release_count": 15
+    },
+    {
+      "friday": "2018-03-09",
+      "week_of_year": 10,
+      "total_gross": 139696317,
+      "wide_release_count": 16
+    },
+    {
+      "friday": "2018-03-16",
+      "week_of_year": 11,
+      "total_gross": 132848455,
+      "wide_release_count": 19
+    },
+    {
+      "friday": "2018-03-23",
+      "week_of_year": 12,
+      "total_gross": 130423221,
+      "wide_release_count": 18
+    },
+    {
+      "friday": "2018-04-06",
+      "week_of_year": 14,
+      "total_gross": 164133343,
+      "wide_release_count": 19
+    },
+    {
+      "friday": "2018-04-13",
+      "week_of_year": 15,
+      "total_gross": 150160537,
+      "wide_release_count": 19
+    },
+    {
+      "friday": "2018-04-20",
+      "week_of_year": 16,
+      "total_gross": 125778372,
+      "wide_release_count": 20
+    },
+    {
+      "friday": "2018-04-27",
+      "week_of_year": 17,
+      "total_gross": 313937789,
+      "wide_release_count": 15
+    },
+    {
+      "friday": "2018-05-04",
+      "week_of_year": 18,
+      "total_gross": 169550312,
+      "wide_release_count": 16
+    },
+    {
+      "friday": "2018-05-11",
+      "week_of_year": 19,
+      "total_gross": 139102219,
+      "wide_release_count": 19
+    },
+    {
+      "friday": "2018-05-18",
+      "week_of_year": 20,
+      "total_gross": 209967303,
+      "wide_release_count": 13
+    },
+    {
+      "friday": "2018-05-25",
+      "week_of_year": 21,
+      "total_gross": 182046016,
+      "wide_release_count": 10
+    },
+    {
+      "friday": "2018-06-01",
+      "week_of_year": 22,
+      "total_gross": 106760099,
+      "wide_release_count": 13
+    },
+    {
+      "friday": "2018-06-08",
+      "week_of_year": 23,
+      "total_gross": 120294762,
+      "wide_release_count": 15
+    },
+    {
+      "friday": "2018-06-15",
+      "week_of_year": 24,
+      "total_gross": 271034765,
+      "wide_release_count": 14
+    },
+    {
+      "friday": "2018-06-22",
+      "week_of_year": 25,
+      "total_gross": 277365758,
+      "wide_release_count": 12
+    },
+    {
+      "friday": "2018-07-06",
+      "week_of_year": 27,
+      "total_gross": 188609905,
+      "wide_release_count": 12
+    },
+    {
+      "friday": "2018-07-13",
+      "week_of_year": 28,
+      "total_gross": 166028564,
+      "wide_release_count": 13
+    },
+    {
+      "friday": "2018-07-20",
+      "week_of_year": 29,
+      "total_gross": 172609113,
+      "wide_release_count": 15
+    },
+    {
+      "friday": "2018-07-27",
+      "week_of_year": 30,
+      "total_gross": 156588266,
+      "wide_release_count": 13
+    },
+    {
+      "friday": "2018-08-03",
+      "week_of_year": 31,
+      "total_gross": 139748359,
+      "wide_release_count": 16
+    },
+    {
+      "friday": "2018-08-10",
+      "week_of_year": 32,
+      "total_gross": 147302462,
+      "wide_release_count": 19
+    },
+    {
+      "friday": "2018-08-17",
+      "week_of_year": 33,
+      "total_gross": 129469267,
+      "wide_release_count": 16
+    },
+    {
+      "friday": "2018-08-24",
+      "week_of_year": 34,
+      "total_gross": 103657410,
+      "wide_release_count": 19
+    },
+    {
+      "friday": "2018-09-07",
+      "week_of_year": 36,
+      "total_gross": 121114594,
+      "wide_release_count": 20
+    },
+    {
+      "friday": "2018-09-14",
+      "week_of_year": 37,
+      "total_gross": 109133476,
+      "wide_release_count": 19
+    },
+    {
+      "friday": "2018-09-21",
+      "week_of_year": 38,
+      "total_gross": 92316508,
+      "wide_release_count": 16
+    },
+    {
+      "friday": "2018-09-28",
+      "week_of_year": 39,
+      "total_gross": 106442479,
+      "wide_release_count": 19
+    },
+    {
+      "friday": "2018-10-05",
+      "week_of_year": 40,
+      "total_gross": 178863365,
+      "wide_release_count": 15
+    },
+    {
+      "friday": "2018-10-12",
+      "week_of_year": 41,
+      "total_gross": 136738283,
+      "wide_release_count": 13
+    },
+    {
+      "friday": "2018-10-19",
+      "week_of_year": 42,
+      "total_gross": 166083062,
+      "wide_release_count": 14
+    },
+    {
+      "friday": "2018-10-26",
+      "week_of_year": 43,
+      "total_gross": 105667363,
+      "wide_release_count": 19
+    },
+    {
+      "friday": "2018-11-02",
+      "week_of_year": 44,
+      "total_gross": 145822119,
+      "wide_release_count": 16
+    },
+    {
+      "friday": "2018-11-09",
+      "week_of_year": 45,
+      "total_gross": 168344121,
+      "wide_release_count": 18
+    },
+    {
+      "friday": "2018-11-16",
+      "week_of_year": 46,
+      "total_gross": 174705199,
+      "wide_release_count": 15
+    },
+    {
+      "friday": "2018-11-23",
+      "week_of_year": 47,
+      "total_gross": 216475781,
+      "wide_release_count": 17
+    },
+    {
+      "friday": "2018-12-07",
+      "week_of_year": 49,
+      "total_gross": 85822147,
+      "wide_release_count": 15
+    },
+    {
+      "friday": "2018-12-14",
+      "week_of_year": 50,
+      "total_gross": 120463418,
+      "wide_release_count": 18
+    },
+    {
+      "friday": "2018-12-21",
+      "week_of_year": 51,
+      "total_gross": 178360577,
+      "wide_release_count": 18
+    },
+    {
+      "friday": "2018-12-28",
+      "week_of_year": 52,
+      "total_gross": 188210389,
+      "wide_release_count": 18
+    },
+    {
+      "friday": "2019-03-08",
+      "week_of_year": 10,
+      "total_gross": 210564349,
+      "wide_release_count": 16
+    },
+    {
+      "friday": "2019-03-15",
+      "week_of_year": 11,
+      "total_gross": 139804590,
+      "wide_release_count": 14
+    },
+    {
+      "friday": "2019-03-22",
+      "week_of_year": 12,
+      "total_gross": 148803456,
+      "wide_release_count": 16
+    },
+    {
+      "friday": "2019-03-29",
+      "week_of_year": 13,
+      "total_gross": 137830324,
+      "wide_release_count": 13
+    },
+    {
+      "friday": "2019-04-05",
+      "week_of_year": 14,
+      "total_gross": 146937939,
+      "wide_release_count": 15
+    },
+    {
+      "friday": "2019-04-12",
+      "week_of_year": 15,
+      "total_gross": 111173940,
+      "wide_release_count": 17
+    },
+    {
+      "friday": "2019-04-19",
+      "week_of_year": 16,
+      "total_gross": 109192341,
+      "wide_release_count": 19
+    },
+    {
+      "friday": "2019-04-26",
+      "week_of_year": 17,
+      "total_gross": 402087399,
+      "wide_release_count": 13
+    },
+    {
+      "friday": "2019-05-03",
+      "week_of_year": 18,
+      "total_gross": 199858498,
+      "wide_release_count": 15
+    },
+    {
+      "friday": "2019-05-10",
+      "week_of_year": 19,
+      "total_gross": 168253370,
+      "wide_release_count": 13
+    },
+    {
+      "friday": "2019-05-17",
+      "week_of_year": 20,
+      "total_gross": 148365208,
+      "wide_release_count": 15
+    },
+    {
+      "friday": "2019-05-24",
+      "week_of_year": 21,
+      "total_gross": 181249523,
+      "wide_release_count": 13
+    },
+    {
+      "friday": "2019-06-07",
+      "week_of_year": 23,
+      "total_gross": 165733750,
+      "wide_release_count": 12
+    },
+    {
+      "friday": "2019-06-14",
+      "week_of_year": 24,
+      "total_gross": 135914033,
+      "wide_release_count": 13
+    },
+    {
+      "friday": "2019-06-21",
+      "week_of_year": 25,
+      "total_gross": 203833169,
+      "wide_release_count": 15
+    },
+    {
+      "friday": "2019-06-28",
+      "week_of_year": 26,
+      "total_gross": 151841304,
+      "wide_release_count": 15
+    },
+    {
+      "friday": "2019-07-05",
+      "week_of_year": 27,
+      "total_gross": 183814074,
+      "wide_release_count": 13
+    },
+    {
+      "friday": "2019-07-12",
+      "week_of_year": 28,
+      "total_gross": 126932873,
+      "wide_release_count": 14
+    },
+    {
+      "friday": "2019-07-19",
+      "week_of_year": 29,
+      "total_gross": 263882516,
+      "wide_release_count": 12
+    },
+    {
+      "friday": "2019-07-26",
+      "week_of_year": 30,
+      "total_gross": 162868014,
+      "wide_release_count": 12
+    },
+    {
+      "friday": "2019-08-02",
+      "week_of_year": 31,
+      "total_gross": 148998871,
+      "wide_release_count": 11
+    },
+    {
+      "friday": "2019-08-09",
+      "week_of_year": 32,
+      "total_gross": 132104260,
+      "wide_release_count": 16
+    },
+    {
+      "friday": "2019-08-16",
+      "week_of_year": 33,
+      "total_gross": 120307107,
+      "wide_release_count": 16
+    },
+    {
+      "friday": "2019-08-23",
+      "week_of_year": 34,
+      "total_gross": 108764687,
+      "wide_release_count": 20
+    },
+    {
+      "friday": "2019-09-06",
+      "week_of_year": 36,
+      "total_gross": 138423527,
+      "wide_release_count": 17
+    },
+    {
+      "friday": "2019-09-13",
+      "week_of_year": 37,
+      "total_gross": 110793853,
+      "wide_release_count": 17
+    },
+    {
+      "friday": "2019-09-20",
+      "week_of_year": 38,
+      "total_gross": 123431530,
+      "wide_release_count": 17
+    },
+    {
+      "friday": "2019-09-27",
+      "week_of_year": 39,
+      "total_gross": 94527126,
+      "wide_release_count": 17
+    },
+    {
+      "friday": "2019-10-04",
+      "week_of_year": 40,
+      "total_gross": 150560443,
+      "wide_release_count": 14
+    },
+    {
+      "friday": "2019-10-11",
+      "week_of_year": 41,
+      "total_gross": 141314393,
+      "wide_release_count": 13
+    },
+    {
+      "friday": "2019-10-18",
+      "week_of_year": 42,
+      "total_gross": 137738327,
+      "wide_release_count": 13
+    },
+    {
+      "friday": "2019-10-25",
+      "week_of_year": 43,
+      "total_gross": 107575317,
+      "wide_release_count": 16
+    },
+    {
+      "friday": "2019-11-01",
+      "week_of_year": 44,
+      "total_gross": 115484817,
+      "wide_release_count": 18
+    },
+    {
+      "friday": "2019-11-08",
+      "week_of_year": 45,
+      "total_gross": 121321449,
+      "wide_release_count": 18
+    },
+    {
+      "friday": "2019-11-15",
+      "week_of_year": 46,
+      "total_gross": 109188015,
+      "wide_release_count": 18
+    },
+    {
+      "friday": "2019-11-22",
+      "week_of_year": 47,
+      "total_gross": 204914094,
+      "wide_release_count": 17
+    },
+    {
+      "friday": "2019-12-06",
+      "week_of_year": 49,
+      "total_gross": 90326095,
+      "wide_release_count": 20
+    },
+    {
+      "friday": "2019-12-13",
+      "week_of_year": 50,
+      "total_gross": 117816850,
+      "wide_release_count": 15
+    },
+    {
+      "friday": "2019-12-20",
+      "week_of_year": 51,
+      "total_gross": 247812806,
+      "wide_release_count": 11
+    },
+    {
+      "friday": "2019-12-27",
+      "week_of_year": 52,
+      "total_gross": 197191326,
+      "wide_release_count": 14
+    },
+    {
+      "friday": "2020-03-06",
+      "week_of_year": 10,
+      "total_gross": 100774559,
+      "wide_release_count": 16
+    },
+    {
+      "friday": "2020-03-13",
+      "week_of_year": 11,
+      "total_gross": 53706394,
+      "wide_release_count": 15
+    },
+    {
+      "friday": "2020-03-20",
+      "week_of_year": 12,
+      "total_gross": 4160,
+      "wide_release_count": 0
+    },
+    {
+      "friday": "2020-03-27",
+      "week_of_year": 13,
+      "total_gross": 3758,
+      "wide_release_count": 0
+    },
+    {
+      "friday": "2020-04-03",
+      "week_of_year": 14,
+      "total_gross": 4097,
+      "wide_release_count": 0
+    },
+    {
+      "friday": "2020-04-10",
+      "week_of_year": 15,
+      "total_gross": 14612,
+      "wide_release_count": 0
+    },
+    {
+      "friday": "2020-04-17",
+      "week_of_year": 16,
+      "total_gross": 5245,
+      "wide_release_count": 0
+    },
+    {
+      "friday": "2020-04-24",
+      "week_of_year": 17,
+      "total_gross": 12062,
+      "wide_release_count": 0
+    },
+    {
+      "friday": "2020-05-01",
+      "week_of_year": 18,
+      "total_gross": 92387,
+      "wide_release_count": 0
+    },
+    {
+      "friday": "2020-05-08",
+      "week_of_year": 19,
+      "total_gross": 86428,
+      "wide_release_count": 0
+    },
+    {
+      "friday": "2020-05-15",
+      "week_of_year": 20,
+      "total_gross": 130583,
+      "wide_release_count": 0
+    },
+    {
+      "friday": "2020-05-22",
+      "week_of_year": 21,
+      "total_gross": 220573,
+      "wide_release_count": 0
+    },
+    {
+      "friday": "2020-05-29",
+      "week_of_year": 22,
+      "total_gross": 204881,
+      "wide_release_count": 0
+    },
+    {
+      "friday": "2020-06-05",
+      "week_of_year": 23,
+      "total_gross": 421572,
+      "wide_release_count": 0
+    },
+    {
+      "friday": "2020-06-12",
+      "week_of_year": 24,
+      "total_gross": 522278,
+      "wide_release_count": 0
+    },
+    {
+      "friday": "2020-06-19",
+      "week_of_year": 25,
+      "total_gross": 1500561,
+      "wide_release_count": 0
+    },
+    {
+      "friday": "2020-06-26",
+      "week_of_year": 26,
+      "total_gross": 292757,
+      "wide_release_count": 0
+    },
+    {
+      "friday": "2020-07-03",
+      "week_of_year": 27,
+      "total_gross": 885784,
+      "wide_release_count": 1
+    },
+    {
+      "friday": "2020-07-10",
+      "week_of_year": 28,
+      "total_gross": 2404819,
+      "wide_release_count": 1
+    },
+    {
+      "friday": "2020-07-17",
+      "week_of_year": 29,
+      "total_gross": 2234047,
+      "wide_release_count": 0
+    },
+    {
+      "friday": "2020-07-24",
+      "week_of_year": 30,
+      "total_gross": 675578,
+      "wide_release_count": 0
+    },
+    {
+      "friday": "2020-08-07",
+      "week_of_year": 32,
+      "total_gross": 1141656,
+      "wide_release_count": 0
+    },
+    {
+      "friday": "2020-08-14",
+      "week_of_year": 33,
+      "total_gross": 2030461,
+      "wide_release_count": 0
+    },
+    {
+      "friday": "2020-08-21",
+      "week_of_year": 34,
+      "total_gross": 6789865,
+      "wide_release_count": 2
+    },
+    {
+      "friday": "2020-08-28",
+      "week_of_year": 35,
+      "total_gross": 14384961,
+      "wide_release_count": 5
+    },
+    {
+      "friday": "2020-09-04",
+      "week_of_year": 36,
+      "total_gross": 16199436,
+      "wide_release_count": 6
+    },
+    {
+      "friday": "2020-09-11",
+      "week_of_year": 37,
+      "total_gross": 12520457,
+      "wide_release_count": 7
+    },
+    {
+      "friday": "2020-09-18",
+      "week_of_year": 38,
+      "total_gross": 11202723,
+      "wide_release_count": 8
+    },
+    {
+      "friday": "2020-09-25",
+      "week_of_year": 39,
+      "total_gross": 9381528,
+      "wide_release_count": 10
+    },
+    {
+      "friday": "2020-10-02",
+      "week_of_year": 40,
+      "total_gross": 9097364,
+      "wide_release_count": 9
+    },
+    {
+      "friday": "2020-10-09",
+      "week_of_year": 41,
+      "total_gross": 10403028,
+      "wide_release_count": 10
+    },
+    {
+      "friday": "2020-10-16",
+      "week_of_year": 42,
+      "total_gross": 12476524,
+      "wide_release_count": 11
+    },
+    {
+      "friday": "2020-10-23",
+      "week_of_year": 43,
+      "total_gross": 11083713,
+      "wide_release_count": 12
+    },
+    {
+      "friday": "2020-11-06",
+      "week_of_year": 45,
+      "total_gross": 11360646,
+      "wide_release_count": 7
+    },
+    {
+      "friday": "2020-11-13",
+      "week_of_year": 46,
+      "total_gross": 11385467,
+      "wide_release_count": 8
+    },
+    {
+      "friday": "2020-11-20",
+      "week_of_year": 47,
+      "total_gross": 6407571,
+      "wide_release_count": 10
+    },
+    {
+      "friday": "2020-11-27",
+      "week_of_year": 48,
+      "total_gross": 14032936,
+      "wide_release_count": 10
+    },
+    {
+      "friday": "2020-12-04",
+      "week_of_year": 49,
+      "total_gross": 8337393,
+      "wide_release_count": 10
+    },
+    {
+      "friday": "2020-12-11",
+      "week_of_year": 50,
+      "total_gross": 6701727,
+      "wide_release_count": 12
+    },
+    {
+      "friday": "2020-12-18",
+      "week_of_year": 51,
+      "total_gross": 7625545,
+      "wide_release_count": 9
+    },
+    {
+      "friday": "2020-12-25",
+      "week_of_year": 52,
+      "total_gross": 24529617,
+      "wide_release_count": 7
+    },
+    {
+      "friday": "2021-03-05",
+      "week_of_year": 9,
+      "total_gross": 24231070,
+      "wide_release_count": 13
+    },
+    {
+      "friday": "2021-03-12",
+      "week_of_year": 10,
+      "total_gross": 17235582,
+      "wide_release_count": 14
+    },
+    {
+      "friday": "2021-03-19",
+      "week_of_year": 11,
+      "total_gross": 17679140,
+      "wide_release_count": 17
+    },
+    {
+      "friday": "2021-03-26",
+      "week_of_year": 12,
+      "total_gross": 18838102,
+      "wide_release_count": 15
+    },
+    {
+      "friday": "2021-04-02",
+      "week_of_year": 13,
+      "total_gross": 44066217,
+      "wide_release_count": 14
+    },
+    {
+      "friday": "2021-04-09",
+      "week_of_year": 14,
+      "total_gross": 26324259,
+      "wide_release_count": 12
+    },
+    {
+      "friday": "2021-04-16",
+      "week_of_year": 15,
+      "total_gross": 19516783,
+      "wide_release_count": 15
+    },
+    {
+      "friday": "2021-04-23",
+      "week_of_year": 16,
+      "total_gross": 57155904,
+      "wide_release_count": 17
+    },
+    {
+      "friday": "2021-05-07",
+      "week_of_year": 18,
+      "total_gross": 23512171,
+      "wide_release_count": 14
+    },
+    {
+      "friday": "2021-05-14",
+      "week_of_year": 19,
+      "total_gross": 26413884,
+      "wide_release_count": 15
+    },
+    {
+      "friday": "2021-05-21",
+      "week_of_year": 20,
+      "total_gross": 20213259,
+      "wide_release_count": 17
+    },
+    {
+      "friday": "2021-05-28",
+      "week_of_year": 21,
+      "total_gross": 80833255,
+      "wide_release_count": 15
+    },
+    {
+      "friday": "2021-06-04",
+      "week_of_year": 22,
+      "total_gross": 65968910,
+      "wide_release_count": 12
+    },
+    {
+      "friday": "2021-06-11",
+      "week_of_year": 23,
+      "total_gross": 57316103,
+      "wide_release_count": 12
+    },
+    {
+      "friday": "2021-06-18",
+      "week_of_year": 24,
+      "total_gross": 45874570,
+      "wide_release_count": 12
+    },
+    {
+      "friday": "2021-06-25",
+      "week_of_year": 25,
+      "total_gross": 98777522,
+      "wide_release_count": 9
+    },
+    {
+      "friday": "2021-07-02",
+      "week_of_year": 26,
+      "total_gross": 69008109,
+      "wide_release_count": 12
+    },
+    {
+      "friday": "2021-07-09",
+      "week_of_year": 27,
+      "total_gross": 119206927,
+      "wide_release_count": 13
+    },
+    {
+      "friday": "2021-07-16",
+      "week_of_year": 28,
+      "total_gross": 91564483,
+      "wide_release_count": 12
+    },
+    {
+      "friday": "2021-07-23",
+      "week_of_year": 29,
+      "total_gross": 70580445,
+      "wide_release_count": 13
+    },
+    {
+      "friday": "2021-08-06",
+      "week_of_year": 31,
+      "total_gross": 65132575,
+      "wide_release_count": 12
+    },
+    {
+      "friday": "2021-08-13",
+      "week_of_year": 32,
+      "total_gross": 75602898,
+      "wide_release_count": 14
+    },
+    {
+      "friday": "2021-08-20",
+      "week_of_year": 33,
+      "total_gross": 63396181,
+      "wide_release_count": 16
+    },
+    {
+      "friday": "2021-08-27",
+      "week_of_year": 34,
+      "total_gross": 61554358,
+      "wide_release_count": 15
+    },
+    {
+      "friday": "2021-09-03",
+      "week_of_year": 35,
+      "total_gross": 110442804,
+      "wide_release_count": 12
+    },
+    {
+      "friday": "2021-09-10",
+      "week_of_year": 36,
+      "total_gross": 61319968,
+      "wide_release_count": 10
+    },
+    {
+      "friday": "2021-09-17",
+      "week_of_year": 37,
+      "total_gross": 47995991,
+      "wide_release_count": 12
+    },
+    {
+      "friday": "2021-09-24",
+      "week_of_year": 38,
+      "total_gross": 38776611,
+      "wide_release_count": 13
+    },
+    {
+      "friday": "2021-10-01",
+      "week_of_year": 39,
+      "total_gross": 129067431,
+      "wide_release_count": 13
+    },
+    {
+      "friday": "2021-10-08",
+      "week_of_year": 40,
+      "total_gross": 108944907,
+      "wide_release_count": 9
+    },
+    {
+      "friday": "2021-10-15",
+      "week_of_year": 41,
+      "total_gross": 109291570,
+      "wide_release_count": 10
+    },
+    {
+      "friday": "2021-10-22",
+      "week_of_year": 42,
+      "total_gross": 95933008,
+      "wide_release_count": 9
+    },
+    {
+      "friday": "2021-10-29",
+      "week_of_year": 43,
+      "total_gross": 64314942,
+      "wide_release_count": 15
+    },
+    {
+      "friday": "2021-11-05",
+      "week_of_year": 44,
+      "total_gross": 109680290,
+      "wide_release_count": 13
+    },
+    {
+      "friday": "2021-11-12",
+      "week_of_year": 45,
+      "total_gross": 70592982,
+      "wide_release_count": 13
+    },
+    {
+      "friday": "2021-11-19",
+      "week_of_year": 46,
+      "total_gross": 83605882,
+      "wide_release_count": 12
+    },
+    {
+      "friday": "2021-11-26",
+      "week_of_year": 47,
+      "total_gross": 96526140,
+      "wide_release_count": 11
+    },
+    {
+      "friday": "2021-12-03",
+      "week_of_year": 48,
+      "total_gross": 52704939,
+      "wide_release_count": 13
+    },
+    {
+      "friday": "2021-12-10",
+      "week_of_year": 49,
+      "total_gross": 43940100,
+      "wide_release_count": 14
+    },
+    {
+      "friday": "2021-12-17",
+      "week_of_year": 50,
+      "total_gross": 282972675,
+      "wide_release_count": 10
+    },
+    {
+      "friday": "2021-12-24",
+      "week_of_year": 51,
+      "total_gross": 143835740,
+      "wide_release_count": 12
+    },
+    {
+      "friday": "2022-03-11",
+      "week_of_year": 10,
+      "total_gross": 101939737,
+      "wide_release_count": 12
+    },
+    {
+      "friday": "2022-03-18",
+      "week_of_year": 11,
+      "total_gross": 83455041,
+      "wide_release_count": 12
+    },
+    {
+      "friday": "2022-03-25",
+      "week_of_year": 12,
+      "total_gross": 82040448,
+      "wide_release_count": 14
+    },
+    {
+      "friday": "2022-04-01",
+      "week_of_year": 13,
+      "total_gross": 83007169,
+      "wide_release_count": 12
+    },
+    {
+      "friday": "2022-04-08",
+      "week_of_year": 14,
+      "total_gross": 118700008,
+      "wide_release_count": 12
+    },
+    {
+      "friday": "2022-04-15",
+      "week_of_year": 15,
+      "total_gross": 107168534,
+      "wide_release_count": 10
+    },
+    {
+      "friday": "2022-04-22",
+      "week_of_year": 16,
+      "total_gross": 93502811,
+      "wide_release_count": 13
+    },
+    {
+      "friday": "2022-05-06",
+      "week_of_year": 18,
+      "total_gross": 222333899,
+      "wide_release_count": 12
+    },
+    {
+      "friday": "2022-05-13",
+      "week_of_year": 19,
+      "total_gross": 91763058,
+      "wide_release_count": 13
+    },
+    {
+      "friday": "2022-05-20",
+      "week_of_year": 20,
+      "total_gross": 75672719,
+      "wide_release_count": 12
+    },
+    {
+      "friday": "2022-05-27",
+      "week_of_year": 21,
+      "total_gross": 177229239,
+      "wide_release_count": 11
+    },
+    {
+      "friday": "2022-06-03",
+      "week_of_year": 22,
+      "total_gross": 121670438,
+      "wide_release_count": 13
+    },
+    {
+      "friday": "2022-06-10",
+      "week_of_year": 23,
+      "total_gross": 214852722,
+      "wide_release_count": 10
+    },
+    {
+      "friday": "2022-06-17",
+      "week_of_year": 24,
+      "total_gross": 164531244,
+      "wide_release_count": 8
+    },
+    {
+      "friday": "2022-06-24",
+      "week_of_year": 25,
+      "total_gross": 134640716,
+      "wide_release_count": 8
+    },
+    {
+      "friday": "2022-07-01",
+      "week_of_year": 26,
+      "total_gross": 189937068,
+      "wide_release_count": 8
+    },
+    {
+      "friday": "2022-07-08",
+      "week_of_year": 27,
+      "total_gross": 238358815,
+      "wide_release_count": 8
+    },
+    {
+      "friday": "2022-07-15",
+      "week_of_year": 28,
+      "total_gross": 132813074,
+      "wide_release_count": 10
+    },
+    {
+      "friday": "2022-07-22",
+      "week_of_year": 29,
+      "total_gross": 126240948,
+      "wide_release_count": 11
+    },
+    {
+      "friday": "2022-07-29",
+      "week_of_year": 30,
+      "total_gross": 97884374,
+      "wide_release_count": 14
+    },
+    {
+      "friday": "2022-08-05",
+      "week_of_year": 31,
+      "total_gross": 92090558,
+      "wide_release_count": 13
+    },
+    {
+      "friday": "2022-08-12",
+      "week_of_year": 32,
+      "total_gross": 65390508,
+      "wide_release_count": 14
+    },
+    {
+      "friday": "2022-08-19",
+      "week_of_year": 33,
+      "total_gross": 78932546,
+      "wide_release_count": 17
+    },
+    {
+      "friday": "2022-08-26",
+      "week_of_year": 34,
+      "total_gross": 52149248,
+      "wide_release_count": 16
+    },
+    {
+      "friday": "2022-09-02",
+      "week_of_year": 35,
+      "total_gross": 55828733,
+      "wide_release_count": 20
+    },
+    {
+      "friday": "2022-09-09",
+      "week_of_year": 36,
+      "total_gross": 43236335,
+      "wide_release_count": 22
+    },
+    {
+      "friday": "2022-09-16",
+      "week_of_year": 37,
+      "total_gross": 51471499,
+      "wide_release_count": 22
+    },
+    {
+      "friday": "2022-09-23",
+      "week_of_year": 38,
+      "total_gross": 62432510,
+      "wide_release_count": 19
+    },
+    {
+      "friday": "2022-10-07",
+      "week_of_year": 40,
+      "total_gross": 58977399,
+      "wide_release_count": 17
+    },
+    {
+      "friday": "2022-10-14",
+      "week_of_year": 41,
+      "total_gross": 76347045,
+      "wide_release_count": 13
+    },
+    {
+      "friday": "2022-10-21",
+      "week_of_year": 42,
+      "total_gross": 113651016,
+      "wide_release_count": 13
+    },
+    {
+      "friday": "2022-10-28",
+      "week_of_year": 43,
+      "total_gross": 67841734,
+      "wide_release_count": 14
+    },
+    {
+      "friday": "2022-11-04",
+      "week_of_year": 44,
+      "total_gross": 58930348,
+      "wide_release_count": 14
+    },
+    {
+      "friday": "2022-11-11",
+      "week_of_year": 45,
+      "total_gross": 209537723,
+      "wide_release_count": 10
+    },
+    {
+      "friday": "2022-11-18",
+      "week_of_year": 46,
+      "total_gross": 100684871,
+      "wide_release_count": 11
+    },
+    {
+      "friday": "2022-11-25",
+      "week_of_year": 47,
+      "total_gross": 93780231,
+      "wide_release_count": 12
+    },
+    {
+      "friday": "2022-12-02",
+      "week_of_year": 48,
+      "total_gross": 52669526,
+      "wide_release_count": 14
+    },
+    {
+      "friday": "2022-12-09",
+      "week_of_year": 49,
+      "total_gross": 37708268,
+      "wide_release_count": 16
+    },
+    {
+      "friday": "2022-12-16",
+      "week_of_year": 50,
+      "total_gross": 152947812,
+      "wide_release_count": 11
+    },
+    {
+      "friday": "2022-12-23",
+      "week_of_year": 51,
+      "total_gross": 94711196,
+      "wide_release_count": 10
+    }
+  ],
+  "historical_slots": {
+    "10": {
+      "median_total_gross": 118089113,
+      "sample_weekends": 12,
+      "genre_stats": {}
+    },
+    "11": {
+      "median_total_gross": 92184348,
+      "sample_weekends": 12,
+      "genre_stats": {}
+    },
+    "12": {
+      "median_total_gross": 130423221,
+      "sample_weekends": 12,
+      "genre_stats": {}
+    },
+    "14": {
+      "median_total_gross": 146937939,
+      "sample_weekends": 12,
+      "genre_stats": {}
+    },
+    "15": {
+      "median_total_gross": 131496504,
+      "sample_weekends": 12,
+      "genre_stats": {
+        "Horror": {
+          "median_gross": 1647717,
+          "sample_size": 1
+        }
+      }
+    },
+    "16": {
+      "median_total_gross": 109192341,
+      "sample_weekends": 12,
+      "genre_stats": {
+        "Horror": {
+          "median_gross": 13517172,
+          "sample_size": 2
+        },
+        "Comedy": {
+          "median_gross": 1650000,
+          "sample_size": 1
+        }
+      }
+    },
+    "17": {
+      "median_total_gross": 100199383,
+      "sample_weekends": 9,
+      "genre_stats": {
+        "Horror": {
+          "median_gross": 5501140,
+          "sample_size": 1
+        }
+      }
+    },
+    "18": {
+      "median_total_gross": 172970858,
+      "sample_weekends": 12,
+      "genre_stats": {
+        "Horror": {
+          "median_gross": 2201007,
+          "sample_size": 1
+        }
+      }
+    },
+    "19": {
+      "median_total_gross": 130908594,
+      "sample_weekends": 12,
+      "genre_stats": {
+        "Horror": {
+          "median_gross": 556167,
+          "sample_size": 1
+        }
+      }
+    },
+    "20": {
+      "median_total_gross": 121759667,
+      "sample_weekends": 12,
+      "genre_stats": {}
+    },
+    "21": {
+      "median_total_gross": 164137607,
+      "sample_weekends": 12,
+      "genre_stats": {
+        "Comedy": {
+          "median_gross": 4321148,
+          "sample_size": 1
+        }
+      }
+    },
+    "22": {
+      "median_total_gross": 135001702,
+      "sample_weekends": 9,
+      "genre_stats": {
+        "Comedy": {
+          "median_gross": 2390164,
+          "sample_size": 2
+        }
+      }
+    },
+    "23": {
+      "median_total_gross": 132771309,
+      "sample_weekends": 11,
+      "genre_stats": {
+        "Comedy": {
+          "median_gross": 951998,
+          "sample_size": 2
+        }
+      }
+    },
+    "24": {
+      "median_total_gross": 164531244,
+      "sample_weekends": 11,
+      "genre_stats": {}
+    },
+    "25": {
+      "median_total_gross": 140826843,
+      "sample_weekends": 11,
+      "genre_stats": {}
+    },
+    "27": {
+      "median_total_gross": 156145120,
+      "sample_weekends": 11,
+      "genre_stats": {}
+    },
+    "28": {
+      "median_total_gross": 140477074,
+      "sample_weekends": 11,
+      "genre_stats": {}
+    },
+    "29": {
+      "median_total_gross": 172609113,
+      "sample_weekends": 11,
+      "genre_stats": {}
+    },
+    "30": {
+      "median_total_gross": 162868014,
+      "sample_weekends": 10,
+      "genre_stats": {}
+    },
+    "31": {
+      "median_total_gross": 139748359,
+      "sample_weekends": 9,
+      "genre_stats": {}
+    },
+    "32": {
+      "median_total_gross": 131243011,
+      "sample_weekends": 11,
+      "genre_stats": {}
+    },
+    "33": {
+      "median_total_gross": 97390629,
+      "sample_weekends": 11,
+      "genre_stats": {}
+    },
+    "34": {
+      "median_total_gross": 88824353,
+      "sample_weekends": 11,
+      "genre_stats": {
+        "Drama": {
+          "median_gross": 1514278,
+          "sample_size": 1
+        }
+      }
+    },
+    "35": {
+      "median_total_gross": 87836416,
+      "sample_weekends": 8,
+      "genre_stats": {
+        "Drama": {
+          "median_gross": 1220871,
+          "sample_size": 1
+        }
+      }
+    },
+    "36": {
+      "median_total_gross": 100847907,
+      "sample_weekends": 11,
+      "genre_stats": {
+        "Drama": {
+          "median_gross": 465035,
+          "sample_size": 1
+        }
+      }
+    },
+    "37": {
+      "median_total_gross": 93734642,
+      "sample_weekends": 11,
+      "genre_stats": {
+        "Drama": {
+          "median_gross": 2035273,
+          "sample_size": 2
+        }
+      }
+    },
+    "38": {
+      "median_total_gross": 81812467,
+      "sample_weekends": 11,
+      "genre_stats": {
+        "Drama": {
+          "median_gross": 1005715,
+          "sample_size": 1
+        }
+      }
+    },
+    "40": {
+      "median_total_gross": 104318304,
+      "sample_weekends": 11,
+      "genre_stats": {
+        "Drama": {
+          "median_gross": 681655,
+          "sample_size": 2
+        }
+      }
+    },
+    "41": {
+      "median_total_gross": 100461379,
+      "sample_weekends": 11,
+      "genre_stats": {
+        "Drama": {
+          "median_gross": 140145,
+          "sample_size": 1
+        }
+      }
+    },
+    "42": {
+      "median_total_gross": 95980741,
+      "sample_weekends": 11,
+      "genre_stats": {}
+    },
+    "43": {
+      "median_total_gross": 88827696,
+      "sample_weekends": 11,
+      "genre_stats": {
+        "Documentary": {
+          "median_gross": 5051950,
+          "sample_size": 1
+        },
+        "Drama": {
+          "median_gross": 130701,
+          "sample_size": 1
+        }
+      }
+    },
+    "44": {
+      "median_total_gross": 115484817,
+      "sample_weekends": 8,
+      "genre_stats": {
+        "Documentary": {
+          "median_gross": 2002028,
+          "sample_size": 1
+        },
+        "Comedy": {
+          "median_gross": 16759161,
+          "sample_size": 1
+        },
+        "Drama": {
+          "median_gross": 792760,
+          "sample_size": 2
+        }
+      }
+    },
+    "45": {
+      "median_total_gross": 121321449,
+      "sample_weekends": 11,
+      "genre_stats": {
+        "Documentary": {
+          "median_gross": 826261,
+          "sample_size": 1
+        },
+        "Comedy": {
+          "median_gross": 11468964,
+          "sample_size": 1
+        },
+        "Drama": {
+          "median_gross": 368695,
+          "sample_size": 1
+        }
+      }
+    },
+    "46": {
+      "median_total_gross": 108047802,
+      "sample_weekends": 11,
+      "genre_stats": {
+        "Comedy": {
+          "median_gross": 7000378,
+          "sample_size": 1
+        }
+      }
+    },
+    "47": {
+      "median_total_gross": 182169091,
+      "sample_weekends": 11,
+      "genre_stats": {
+        "Comedy": {
+          "median_gross": 4895568,
+          "sample_size": 1
+        }
+      }
+    },
+    "48": {
+      "median_total_gross": 97128796,
+      "sample_weekends": 8,
+      "genre_stats": {
+        "Comedy": {
+          "median_gross": 3385484,
+          "sample_size": 1
+        }
+      }
+    },
+    "49": {
+      "median_total_gross": 84873861,
+      "sample_weekends": 11,
+      "genre_stats": {
+        "Comedy": {
+          "median_gross": 2581446,
+          "sample_size": 1
+        }
+      }
+    },
+    "50": {
+      "median_total_gross": 117816850,
+      "sample_weekends": 11,
+      "genre_stats": {
+        "Comedy": {
+          "median_gross": 1011180,
+          "sample_size": 1
+        }
+      }
+    },
+    "51": {
+      "median_total_gross": 178168406,
+      "sample_weekends": 11,
+      "genre_stats": {}
+    },
+    "52": {
+      "median_total_gross": 188210389,
+      "sample_weekends": 8,
+      "genre_stats": {}
+    },
+    "13": {
+      "median_total_gross": 97401546,
+      "sample_weekends": 9,
+      "genre_stats": {}
+    },
+    "26": {
+      "median_total_gross": 154286054,
+      "sample_weekends": 8,
+      "genre_stats": {}
+    },
+    "39": {
+      "median_total_gross": 94527126,
+      "sample_weekends": 7,
+      "genre_stats": {}
+    },
+    "9": {
+      "median_total_gross": 161499059,
+      "sample_weekends": 2,
+      "genre_stats": {}
+    }
+  },
+  "future_weekends": [
+    {
+      "friday": "2026-06-12",
+      "week_of_year": 24,
+      "historical_slot": {
+        "median_total_gross": 164531244,
+        "sample_weekends": 11,
+        "genre_stats": {}
+      },
+      "events": [],
+      "competition": [
+        {
+          "title": "Backrooms",
+          "genres": [],
+          "mpaa_rating": "R",
+          "week_in_release": 3,
+          "source": "current_holdover",
+          "is_new_release": false,
+          "holdover_estimated": true
+        },
+        {
+          "title": "Obsession",
+          "genres": [],
+          "mpaa_rating": "R",
+          "week_in_release": 5,
+          "source": "current_holdover",
+          "is_new_release": false,
+          "holdover_estimated": true
+        },
+        {
+          "title": "Star Wars: The Mandalorian and Grogu",
+          "genres": [],
+          "mpaa_rating": "PG-13",
+          "week_in_release": 4,
+          "source": "current_holdover",
+          "is_new_release": false,
+          "holdover_estimated": true
+        },
+        {
+          "title": "The Breadwinner",
+          "genres": [],
+          "mpaa_rating": "PG",
+          "week_in_release": 3,
+          "source": "current_holdover",
+          "is_new_release": false,
+          "holdover_estimated": true
+        },
+        {
+          "title": "Pressure",
+          "genres": [],
+          "mpaa_rating": "PG-13",
+          "week_in_release": 3,
+          "source": "current_holdover",
+          "is_new_release": false,
+          "holdover_estimated": true
+        },
+        {
+          "title": "Passenger",
+          "genres": [],
+          "mpaa_rating": "R",
+          "week_in_release": 4,
+          "source": "current_holdover",
+          "is_new_release": false,
+          "holdover_estimated": true
+        },
+        {
+          "title": "I Love Boosters",
+          "genres": [],
+          "mpaa_rating": "R",
+          "week_in_release": 4,
+          "source": "current_holdover",
+          "is_new_release": false,
+          "holdover_estimated": true
+        },
+        {
+          "title": "Revolutionary America",
+          "genres": [],
+          "mpaa_rating": null,
+          "week_in_release": 3,
+          "source": "current_holdover",
+          "is_new_release": false,
+          "holdover_estimated": true
+        },
+        {
+          "title": "The Amazing Digital Circus: The Last Act",
+          "genres": [
+            "Adventure",
+            "Animation",
+            "Comedy",
+            "Drama",
+            "Horror",
+            "Mystery",
+            "Sci-Fi"
+          ],
+          "mpaa_rating": null,
+          "week_in_release": 2,
+          "source": "scheduled",
+          "is_new_release": false,
+          "holdover_estimated": true
+        },
+        {
+          "title": "Power Ballad",
+          "genres": [
+            "Comedy",
+            "Drama",
+            "Music",
+            "Musical"
+          ],
+          "mpaa_rating": "R",
+          "week_in_release": 2,
+          "source": "scheduled",
+          "is_new_release": false,
+          "holdover_estimated": true
+        },
+        {
+          "title": "The Currents",
+          "genres": [
+            "Drama"
+          ],
+          "mpaa_rating": null,
+          "week_in_release": 2,
+          "source": "scheduled",
+          "is_new_release": false,
+          "holdover_estimated": true
+        },
+        {
+          "title": "Scary Movie",
+          "genres": [
+            "Comedy",
+            "Horror"
+          ],
+          "mpaa_rating": "R",
+          "week_in_release": 2,
+          "source": "scheduled",
+          "is_new_release": false,
+          "holdover_estimated": true
+        },
+        {
+          "title": "Masters of the Universe",
+          "genres": [
+            "Action",
+            "Adventure",
+            "Fantasy",
+            "Sci-Fi"
+          ],
+          "mpaa_rating": "PG-13",
+          "week_in_release": 2,
+          "source": "scheduled",
+          "is_new_release": false,
+          "holdover_estimated": true
+        },
+        {
+          "title": "Stop! That! Train!",
+          "genres": [
+            "Action",
+            "Comedy"
+          ],
+          "mpaa_rating": "R",
+          "week_in_release": 1,
+          "source": "scheduled",
+          "is_new_release": true,
+          "holdover_estimated": false
+        },
+        {
+          "title": "Disclosure Day",
+          "genres": [
+            "Drama",
+            "Sci-Fi",
+            "Thriller"
+          ],
+          "mpaa_rating": "PG-13",
+          "week_in_release": 1,
+          "source": "scheduled",
+          "is_new_release": true,
+          "holdover_estimated": false
+        },
+        {
+          "title": "Jinsei",
+          "genres": [
+            "Animation",
+            "Drama"
+          ],
+          "mpaa_rating": null,
+          "week_in_release": 1,
+          "source": "scheduled",
+          "is_new_release": true,
+          "holdover_estimated": false
+        }
+      ]
+    },
+    {
+      "friday": "2026-06-19",
+      "week_of_year": 25,
+      "historical_slot": {
+        "median_total_gross": 140826843,
+        "sample_weekends": 11,
+        "genre_stats": {}
+      },
+      "events": [],
+      "competition": [
+        {
+          "title": "Backrooms",
+          "genres": [],
+          "mpaa_rating": "R",
+          "week_in_release": 4,
+          "source": "current_holdover",
+          "is_new_release": false,
+          "holdover_estimated": true
+        },
+        {
+          "title": "Star Wars: The Mandalorian and Grogu",
+          "genres": [],
+          "mpaa_rating": "PG-13",
+          "week_in_release": 5,
+          "source": "current_holdover",
+          "is_new_release": false,
+          "holdover_estimated": true
+        },
+        {
+          "title": "The Breadwinner",
+          "genres": [],
+          "mpaa_rating": "PG",
+          "week_in_release": 4,
+          "source": "current_holdover",
+          "is_new_release": false,
+          "holdover_estimated": true
+        },
+        {
+          "title": "Pressure",
+          "genres": [],
+          "mpaa_rating": "PG-13",
+          "week_in_release": 4,
+          "source": "current_holdover",
+          "is_new_release": false,
+          "holdover_estimated": true
+        },
+        {
+          "title": "Passenger",
+          "genres": [],
+          "mpaa_rating": "R",
+          "week_in_release": 5,
+          "source": "current_holdover",
+          "is_new_release": false,
+          "holdover_estimated": true
+        },
+        {
+          "title": "I Love Boosters",
+          "genres": [],
+          "mpaa_rating": "R",
+          "week_in_release": 5,
+          "source": "current_holdover",
+          "is_new_release": false,
+          "holdover_estimated": true
+        },
+        {
+          "title": "Revolutionary America",
+          "genres": [],
+          "mpaa_rating": null,
+          "week_in_release": 4,
+          "source": "current_holdover",
+          "is_new_release": false,
+          "holdover_estimated": true
+        },
+        {
+          "title": "The Amazing Digital Circus: The Last Act",
+          "genres": [
+            "Adventure",
+            "Animation",
+            "Comedy",
+            "Drama",
+            "Horror",
+            "Mystery",
+            "Sci-Fi"
+          ],
+          "mpaa_rating": null,
+          "week_in_release": 3,
+          "source": "scheduled",
+          "is_new_release": false,
+          "holdover_estimated": true
+        },
+        {
+          "title": "Power Ballad",
+          "genres": [
+            "Comedy",
+            "Drama",
+            "Music",
+            "Musical"
+          ],
+          "mpaa_rating": "R",
+          "week_in_release": 3,
+          "source": "scheduled",
+          "is_new_release": false,
+          "holdover_estimated": true
+        },
+        {
+          "title": "The Currents",
+          "genres": [
+            "Drama"
+          ],
+          "mpaa_rating": null,
+          "week_in_release": 3,
+          "source": "scheduled",
+          "is_new_release": false,
+          "holdover_estimated": true
+        },
+        {
+          "title": "Scary Movie",
+          "genres": [
+            "Comedy",
+            "Horror"
+          ],
+          "mpaa_rating": "R",
+          "week_in_release": 3,
+          "source": "scheduled",
+          "is_new_release": false,
+          "holdover_estimated": true
+        },
+        {
+          "title": "Masters of the Universe",
+          "genres": [
+            "Action",
+            "Adventure",
+            "Fantasy",
+            "Sci-Fi"
+          ],
+          "mpaa_rating": "PG-13",
+          "week_in_release": 3,
+          "source": "scheduled",
+          "is_new_release": false,
+          "holdover_estimated": true
+        },
+        {
+          "title": "Stop! That! Train!",
+          "genres": [
+            "Action",
+            "Comedy"
+          ],
+          "mpaa_rating": "R",
+          "week_in_release": 2,
+          "source": "scheduled",
+          "is_new_release": false,
+          "holdover_estimated": true
+        },
+        {
+          "title": "Disclosure Day",
+          "genres": [
+            "Drama",
+            "Sci-Fi",
+            "Thriller"
+          ],
+          "mpaa_rating": "PG-13",
+          "week_in_release": 2,
+          "source": "scheduled",
+          "is_new_release": false,
+          "holdover_estimated": true
+        },
+        {
+          "title": "Jinsei",
+          "genres": [
+            "Animation",
+            "Drama"
+          ],
+          "mpaa_rating": null,
+          "week_in_release": 2,
+          "source": "scheduled",
+          "is_new_release": false,
+          "holdover_estimated": true
+        },
+        {
+          "title": "Diamond Made Man",
+          "genres": [
+            "Action",
+            "Sci-Fi"
+          ],
+          "mpaa_rating": null,
+          "week_in_release": 1,
+          "source": "scheduled",
+          "is_new_release": true,
+          "holdover_estimated": false
+        },
+        {
+          "title": "O Horizon",
+          "genres": [
+            "Comedy",
+            "Drama",
+            "Romance",
+            "Sci-Fi"
+          ],
+          "mpaa_rating": null,
+          "week_in_release": 1,
+          "source": "scheduled",
+          "is_new_release": true,
+          "holdover_estimated": false
+        },
+        {
+          "title": "Toy Story 5",
+          "genres": [
+            "Adventure",
+            "Animation",
+            "Comedy",
+            "Drama",
+            "Family",
+            "Fantasy"
+          ],
+          "mpaa_rating": "PG",
+          "week_in_release": 1,
+          "source": "scheduled",
+          "is_new_release": true,
+          "holdover_estimated": false
+        },
+        {
+          "title": "The Death of Robin Hood",
+          "genres": [
+            "Action",
+            "Adventure",
+            "Drama"
+          ],
+          "mpaa_rating": "R",
+          "week_in_release": 1,
+          "source": "scheduled",
+          "is_new_release": true,
+          "holdover_estimated": false
+        }
+      ]
+    },
+    {
+      "friday": "2026-06-26",
+      "week_of_year": 26,
+      "historical_slot": {
+        "median_total_gross": 154286054,
+        "sample_weekends": 8,
+        "genre_stats": {}
+      },
+      "events": [],
+      "competition": [
+        {
+          "title": "Backrooms",
+          "genres": [],
+          "mpaa_rating": "R",
+          "week_in_release": 5,
+          "source": "current_holdover",
+          "is_new_release": false,
+          "holdover_estimated": true
+        },
+        {
+          "title": "The Breadwinner",
+          "genres": [],
+          "mpaa_rating": "PG",
+          "week_in_release": 5,
+          "source": "current_holdover",
+          "is_new_release": false,
+          "holdover_estimated": true
+        },
+        {
+          "title": "Pressure",
+          "genres": [],
+          "mpaa_rating": "PG-13",
+          "week_in_release": 5,
+          "source": "current_holdover",
+          "is_new_release": false,
+          "holdover_estimated": true
+        },
+        {
+          "title": "Revolutionary America",
+          "genres": [],
+          "mpaa_rating": null,
+          "week_in_release": 5,
+          "source": "current_holdover",
+          "is_new_release": false,
+          "holdover_estimated": true
+        },
+        {
+          "title": "The Amazing Digital Circus: The Last Act",
+          "genres": [
+            "Adventure",
+            "Animation",
+            "Comedy",
+            "Drama",
+            "Horror",
+            "Mystery",
+            "Sci-Fi"
+          ],
+          "mpaa_rating": null,
+          "week_in_release": 4,
+          "source": "scheduled",
+          "is_new_release": false,
+          "holdover_estimated": true
+        },
+        {
+          "title": "Power Ballad",
+          "genres": [
+            "Comedy",
+            "Drama",
+            "Music",
+            "Musical"
+          ],
+          "mpaa_rating": "R",
+          "week_in_release": 4,
+          "source": "scheduled",
+          "is_new_release": false,
+          "holdover_estimated": true
+        },
+        {
+          "title": "The Currents",
+          "genres": [
+            "Drama"
+          ],
+          "mpaa_rating": null,
+          "week_in_release": 4,
+          "source": "scheduled",
+          "is_new_release": false,
+          "holdover_estimated": true
+        },
+        {
+          "title": "Scary Movie",
+          "genres": [
+            "Comedy",
+            "Horror"
+          ],
+          "mpaa_rating": "R",
+          "week_in_release": 4,
+          "source": "scheduled",
+          "is_new_release": false,
+          "holdover_estimated": true
+        },
+        {
+          "title": "Masters of the Universe",
+          "genres": [
+            "Action",
+            "Adventure",
+            "Fantasy",
+            "Sci-Fi"
+          ],
+          "mpaa_rating": "PG-13",
+          "week_in_release": 4,
+          "source": "scheduled",
+          "is_new_release": false,
+          "holdover_estimated": true
+        },
+        {
+          "title": "Stop! That! Train!",
+          "genres": [
+            "Action",
+            "Comedy"
+          ],
+          "mpaa_rating": "R",
+          "week_in_release": 3,
+          "source": "scheduled",
+          "is_new_release": false,
+          "holdover_estimated": true
+        },
+        {
+          "title": "Disclosure Day",
+          "genres": [
+            "Drama",
+            "Sci-Fi",
+            "Thriller"
+          ],
+          "mpaa_rating": "PG-13",
+          "week_in_release": 3,
+          "source": "scheduled",
+          "is_new_release": false,
+          "holdover_estimated": true
+        },
+        {
+          "title": "Jinsei",
+          "genres": [
+            "Animation",
+            "Drama"
+          ],
+          "mpaa_rating": null,
+          "week_in_release": 3,
+          "source": "scheduled",
+          "is_new_release": false,
+          "holdover_estimated": true
+        },
+        {
+          "title": "Diamond Made Man",
+          "genres": [
+            "Action",
+            "Sci-Fi"
+          ],
+          "mpaa_rating": null,
+          "week_in_release": 2,
+          "source": "scheduled",
+          "is_new_release": false,
+          "holdover_estimated": true
+        },
+        {
+          "title": "O Horizon",
+          "genres": [
+            "Comedy",
+            "Drama",
+            "Romance",
+            "Sci-Fi"
+          ],
+          "mpaa_rating": null,
+          "week_in_release": 2,
+          "source": "scheduled",
+          "is_new_release": false,
+          "holdover_estimated": true
+        },
+        {
+          "title": "Toy Story 5",
+          "genres": [
+            "Adventure",
+            "Animation",
+            "Comedy",
+            "Drama",
+            "Family",
+            "Fantasy"
+          ],
+          "mpaa_rating": "PG",
+          "week_in_release": 2,
+          "source": "scheduled",
+          "is_new_release": false,
+          "holdover_estimated": true
+        },
+        {
+          "title": "The Death of Robin Hood",
+          "genres": [
+            "Action",
+            "Adventure",
+            "Drama"
+          ],
+          "mpaa_rating": "R",
+          "week_in_release": 2,
+          "source": "scheduled",
+          "is_new_release": false,
+          "holdover_estimated": true
+        },
+        {
+          "title": "Jackass: Best and Last",
+          "genres": [
+            "Comedy",
+            "Documentary"
+          ],
+          "mpaa_rating": null,
+          "week_in_release": 1,
+          "source": "scheduled",
+          "is_new_release": true,
+          "holdover_estimated": false
+        },
+        {
+          "title": "Supergirl",
+          "genres": [
+            "Action",
+            "Adventure",
+            "Drama",
+            "Sci-Fi"
+          ],
+          "mpaa_rating": "PG-13",
+          "week_in_release": 1,
+          "source": "scheduled",
+          "is_new_release": true,
+          "holdover_estimated": false
+        },
+        {
+          "title": "Couture",
+          "genres": [
+            "Drama"
+          ],
+          "mpaa_rating": "R",
+          "week_in_release": 1,
+          "source": "scheduled",
+          "is_new_release": true,
+          "holdover_estimated": false
+        }
+      ]
+    },
+    {
+      "friday": "2026-07-03",
+      "week_of_year": 27,
+      "historical_slot": {
+        "median_total_gross": 156145120,
+        "sample_weekends": 11,
+        "genre_stats": {}
+      },
+      "events": [
+        {
+          "name": "Independence Day",
+          "boost": 0.75,
+          "kind": "holiday"
+        }
+      ],
+      "competition": [
+        {
+          "title": "The Amazing Digital Circus: The Last Act",
+          "genres": [
+            "Adventure",
+            "Animation",
+            "Comedy",
+            "Drama",
+            "Horror",
+            "Mystery",
+            "Sci-Fi"
+          ],
+          "mpaa_rating": null,
+          "week_in_release": 5,
+          "source": "scheduled",
+          "is_new_release": false,
+          "holdover_estimated": true
+        },
+        {
+          "title": "Power Ballad",
+          "genres": [
+            "Comedy",
+            "Drama",
+            "Music",
+            "Musical"
+          ],
+          "mpaa_rating": "R",
+          "week_in_release": 5,
+          "source": "scheduled",
+          "is_new_release": false,
+          "holdover_estimated": true
+        },
+        {
+          "title": "The Currents",
+          "genres": [
+            "Drama"
+          ],
+          "mpaa_rating": null,
+          "week_in_release": 5,
+          "source": "scheduled",
+          "is_new_release": false,
+          "holdover_estimated": true
+        },
+        {
+          "title": "Scary Movie",
+          "genres": [
+            "Comedy",
+            "Horror"
+          ],
+          "mpaa_rating": "R",
+          "week_in_release": 5,
+          "source": "scheduled",
+          "is_new_release": false,
+          "holdover_estimated": true
+        },
+        {
+          "title": "Masters of the Universe",
+          "genres": [
+            "Action",
+            "Adventure",
+            "Fantasy",
+            "Sci-Fi"
+          ],
+          "mpaa_rating": "PG-13",
+          "week_in_release": 5,
+          "source": "scheduled",
+          "is_new_release": false,
+          "holdover_estimated": true
+        },
+        {
+          "title": "Stop! That! Train!",
+          "genres": [
+            "Action",
+            "Comedy"
+          ],
+          "mpaa_rating": "R",
+          "week_in_release": 4,
+          "source": "scheduled",
+          "is_new_release": false,
+          "holdover_estimated": true
+        },
+        {
+          "title": "Disclosure Day",
+          "genres": [
+            "Drama",
+            "Sci-Fi",
+            "Thriller"
+          ],
+          "mpaa_rating": "PG-13",
+          "week_in_release": 4,
+          "source": "scheduled",
+          "is_new_release": false,
+          "holdover_estimated": true
+        },
+        {
+          "title": "Jinsei",
+          "genres": [
+            "Animation",
+            "Drama"
+          ],
+          "mpaa_rating": null,
+          "week_in_release": 4,
+          "source": "scheduled",
+          "is_new_release": false,
+          "holdover_estimated": true
+        },
+        {
+          "title": "Diamond Made Man",
+          "genres": [
+            "Action",
+            "Sci-Fi"
+          ],
+          "mpaa_rating": null,
+          "week_in_release": 3,
+          "source": "scheduled",
+          "is_new_release": false,
+          "holdover_estimated": true
+        },
+        {
+          "title": "O Horizon",
+          "genres": [
+            "Comedy",
+            "Drama",
+            "Romance",
+            "Sci-Fi"
+          ],
+          "mpaa_rating": null,
+          "week_in_release": 3,
+          "source": "scheduled",
+          "is_new_release": false,
+          "holdover_estimated": true
+        },
+        {
+          "title": "Toy Story 5",
+          "genres": [
+            "Adventure",
+            "Animation",
+            "Comedy",
+            "Drama",
+            "Family",
+            "Fantasy"
+          ],
+          "mpaa_rating": "PG",
+          "week_in_release": 3,
+          "source": "scheduled",
+          "is_new_release": false,
+          "holdover_estimated": true
+        },
+        {
+          "title": "The Death of Robin Hood",
+          "genres": [
+            "Action",
+            "Adventure",
+            "Drama"
+          ],
+          "mpaa_rating": "R",
+          "week_in_release": 3,
+          "source": "scheduled",
+          "is_new_release": false,
+          "holdover_estimated": true
+        },
+        {
+          "title": "Jackass: Best and Last",
+          "genres": [
+            "Comedy",
+            "Documentary"
+          ],
+          "mpaa_rating": null,
+          "week_in_release": 2,
+          "source": "scheduled",
+          "is_new_release": false,
+          "holdover_estimated": true
+        },
+        {
+          "title": "Supergirl",
+          "genres": [
+            "Action",
+            "Adventure",
+            "Drama",
+            "Sci-Fi"
+          ],
+          "mpaa_rating": "PG-13",
+          "week_in_release": 2,
+          "source": "scheduled",
+          "is_new_release": false,
+          "holdover_estimated": true
+        },
+        {
+          "title": "Couture",
+          "genres": [
+            "Drama"
+          ],
+          "mpaa_rating": "R",
+          "week_in_release": 2,
+          "source": "scheduled",
+          "is_new_release": false,
+          "holdover_estimated": true
+        },
+        {
+          "title": "Minions & Monsters",
+          "genres": [
+            "Adventure",
+            "Animation",
+            "Comedy",
+            "Crime",
+            "Family",
+            "Sci-Fi"
+          ],
+          "mpaa_rating": "PG",
+          "week_in_release": 1,
+          "source": "scheduled",
+          "is_new_release": true,
+          "holdover_estimated": false
+        },
+        {
+          "title": "Thrash",
+          "genres": [
+            "Horror",
+            "Thriller"
+          ],
+          "mpaa_rating": "R",
+          "week_in_release": 1,
+          "source": "scheduled",
+          "is_new_release": true,
+          "holdover_estimated": false
+        }
+      ]
+    },
+    {
+      "friday": "2026-07-10",
+      "week_of_year": 28,
+      "historical_slot": {
+        "median_total_gross": 140477074,
+        "sample_weekends": 11,
+        "genre_stats": {}
+      },
+      "events": [],
+      "competition": [
+        {
+          "title": "Stop! That! Train!",
+          "genres": [
+            "Action",
+            "Comedy"
+          ],
+          "mpaa_rating": "R",
+          "week_in_release": 5,
+          "source": "scheduled",
+          "is_new_release": false,
+          "holdover_estimated": true
+        },
+        {
+          "title": "Disclosure Day",
+          "genres": [
+            "Drama",
+            "Sci-Fi",
+            "Thriller"
+          ],
+          "mpaa_rating": "PG-13",
+          "week_in_release": 5,
+          "source": "scheduled",
+          "is_new_release": false,
+          "holdover_estimated": true
+        },
+        {
+          "title": "Jinsei",
+          "genres": [
+            "Animation",
+            "Drama"
+          ],
+          "mpaa_rating": null,
+          "week_in_release": 5,
+          "source": "scheduled",
+          "is_new_release": false,
+          "holdover_estimated": true
+        },
+        {
+          "title": "Diamond Made Man",
+          "genres": [
+            "Action",
+            "Sci-Fi"
+          ],
+          "mpaa_rating": null,
+          "week_in_release": 4,
+          "source": "scheduled",
+          "is_new_release": false,
+          "holdover_estimated": true
+        },
+        {
+          "title": "O Horizon",
+          "genres": [
+            "Comedy",
+            "Drama",
+            "Romance",
+            "Sci-Fi"
+          ],
+          "mpaa_rating": null,
+          "week_in_release": 4,
+          "source": "scheduled",
+          "is_new_release": false,
+          "holdover_estimated": true
+        },
+        {
+          "title": "Toy Story 5",
+          "genres": [
+            "Adventure",
+            "Animation",
+            "Comedy",
+            "Drama",
+            "Family",
+            "Fantasy"
+          ],
+          "mpaa_rating": "PG",
+          "week_in_release": 4,
+          "source": "scheduled",
+          "is_new_release": false,
+          "holdover_estimated": true
+        },
+        {
+          "title": "The Death of Robin Hood",
+          "genres": [
+            "Action",
+            "Adventure",
+            "Drama"
+          ],
+          "mpaa_rating": "R",
+          "week_in_release": 4,
+          "source": "scheduled",
+          "is_new_release": false,
+          "holdover_estimated": true
+        },
+        {
+          "title": "Jackass: Best and Last",
+          "genres": [
+            "Comedy",
+            "Documentary"
+          ],
+          "mpaa_rating": null,
+          "week_in_release": 3,
+          "source": "scheduled",
+          "is_new_release": false,
+          "holdover_estimated": true
+        },
+        {
+          "title": "Supergirl",
+          "genres": [
+            "Action",
+            "Adventure",
+            "Drama",
+            "Sci-Fi"
+          ],
+          "mpaa_rating": "PG-13",
+          "week_in_release": 3,
+          "source": "scheduled",
+          "is_new_release": false,
+          "holdover_estimated": true
+        },
+        {
+          "title": "Couture",
+          "genres": [
+            "Drama"
+          ],
+          "mpaa_rating": "R",
+          "week_in_release": 3,
+          "source": "scheduled",
+          "is_new_release": false,
+          "holdover_estimated": true
+        },
+        {
+          "title": "Minions & Monsters",
+          "genres": [
+            "Adventure",
+            "Animation",
+            "Comedy",
+            "Crime",
+            "Family",
+            "Sci-Fi"
+          ],
+          "mpaa_rating": "PG",
+          "week_in_release": 2,
+          "source": "scheduled",
+          "is_new_release": false,
+          "holdover_estimated": true
+        },
+        {
+          "title": "Thrash",
+          "genres": [
+            "Horror",
+            "Thriller"
+          ],
+          "mpaa_rating": "R",
+          "week_in_release": 2,
+          "source": "scheduled",
+          "is_new_release": false,
+          "holdover_estimated": true
+        }
+      ]
+    },
+    {
+      "friday": "2026-07-17",
+      "week_of_year": 29,
+      "historical_slot": {
+        "median_total_gross": 172609113,
+        "sample_weekends": 11,
+        "genre_stats": {}
+      },
+      "events": [],
+      "competition": [
+        {
+          "title": "Diamond Made Man",
+          "genres": [
+            "Action",
+            "Sci-Fi"
+          ],
+          "mpaa_rating": null,
+          "week_in_release": 5,
+          "source": "scheduled",
+          "is_new_release": false,
+          "holdover_estimated": true
+        },
+        {
+          "title": "O Horizon",
+          "genres": [
+            "Comedy",
+            "Drama",
+            "Romance",
+            "Sci-Fi"
+          ],
+          "mpaa_rating": null,
+          "week_in_release": 5,
+          "source": "scheduled",
+          "is_new_release": false,
+          "holdover_estimated": true
+        },
+        {
+          "title": "Toy Story 5",
+          "genres": [
+            "Adventure",
+            "Animation",
+            "Comedy",
+            "Drama",
+            "Family",
+            "Fantasy"
+          ],
+          "mpaa_rating": "PG",
+          "week_in_release": 5,
+          "source": "scheduled",
+          "is_new_release": false,
+          "holdover_estimated": true
+        },
+        {
+          "title": "The Death of Robin Hood",
+          "genres": [
+            "Action",
+            "Adventure",
+            "Drama"
+          ],
+          "mpaa_rating": "R",
+          "week_in_release": 5,
+          "source": "scheduled",
+          "is_new_release": false,
+          "holdover_estimated": true
+        },
+        {
+          "title": "Jackass: Best and Last",
+          "genres": [
+            "Comedy",
+            "Documentary"
+          ],
+          "mpaa_rating": null,
+          "week_in_release": 4,
+          "source": "scheduled",
+          "is_new_release": false,
+          "holdover_estimated": true
+        },
+        {
+          "title": "Supergirl",
+          "genres": [
+            "Action",
+            "Adventure",
+            "Drama",
+            "Sci-Fi"
+          ],
+          "mpaa_rating": "PG-13",
+          "week_in_release": 4,
+          "source": "scheduled",
+          "is_new_release": false,
+          "holdover_estimated": true
+        },
+        {
+          "title": "Couture",
+          "genres": [
+            "Drama"
+          ],
+          "mpaa_rating": "R",
+          "week_in_release": 4,
+          "source": "scheduled",
+          "is_new_release": false,
+          "holdover_estimated": true
+        },
+        {
+          "title": "Minions & Monsters",
+          "genres": [
+            "Adventure",
+            "Animation",
+            "Comedy",
+            "Crime",
+            "Family",
+            "Sci-Fi"
+          ],
+          "mpaa_rating": "PG",
+          "week_in_release": 3,
+          "source": "scheduled",
+          "is_new_release": false,
+          "holdover_estimated": true
+        },
+        {
+          "title": "Thrash",
+          "genres": [
+            "Horror",
+            "Thriller"
+          ],
+          "mpaa_rating": "R",
+          "week_in_release": 3,
+          "source": "scheduled",
+          "is_new_release": false,
+          "holdover_estimated": true
+        }
+      ]
+    },
+    {
+      "friday": "2026-07-24",
+      "week_of_year": 30,
+      "historical_slot": {
+        "median_total_gross": 162868014,
+        "sample_weekends": 10,
+        "genre_stats": {}
+      },
+      "events": [],
+      "competition": [
+        {
+          "title": "Jackass: Best and Last",
+          "genres": [
+            "Comedy",
+            "Documentary"
+          ],
+          "mpaa_rating": null,
+          "week_in_release": 5,
+          "source": "scheduled",
+          "is_new_release": false,
+          "holdover_estimated": true
+        },
+        {
+          "title": "Supergirl",
+          "genres": [
+            "Action",
+            "Adventure",
+            "Drama",
+            "Sci-Fi"
+          ],
+          "mpaa_rating": "PG-13",
+          "week_in_release": 5,
+          "source": "scheduled",
+          "is_new_release": false,
+          "holdover_estimated": true
+        },
+        {
+          "title": "Couture",
+          "genres": [
+            "Drama"
+          ],
+          "mpaa_rating": "R",
+          "week_in_release": 5,
+          "source": "scheduled",
+          "is_new_release": false,
+          "holdover_estimated": true
+        },
+        {
+          "title": "Minions & Monsters",
+          "genres": [
+            "Adventure",
+            "Animation",
+            "Comedy",
+            "Crime",
+            "Family",
+            "Sci-Fi"
+          ],
+          "mpaa_rating": "PG",
+          "week_in_release": 4,
+          "source": "scheduled",
+          "is_new_release": false,
+          "holdover_estimated": true
+        },
+        {
+          "title": "Thrash",
+          "genres": [
+            "Horror",
+            "Thriller"
+          ],
+          "mpaa_rating": "R",
+          "week_in_release": 4,
+          "source": "scheduled",
+          "is_new_release": false,
+          "holdover_estimated": true
+        }
+      ]
+    },
+    {
+      "friday": "2026-07-31",
+      "week_of_year": 31,
+      "historical_slot": {
+        "median_total_gross": 139748359,
+        "sample_weekends": 9,
+        "genre_stats": {}
+      },
+      "events": [],
+      "competition": [
+        {
+          "title": "Minions & Monsters",
+          "genres": [
+            "Adventure",
+            "Animation",
+            "Comedy",
+            "Crime",
+            "Family",
+            "Sci-Fi"
+          ],
+          "mpaa_rating": "PG",
+          "week_in_release": 5,
+          "source": "scheduled",
+          "is_new_release": false,
+          "holdover_estimated": true
+        },
+        {
+          "title": "Thrash",
+          "genres": [
+            "Horror",
+            "Thriller"
+          ],
+          "mpaa_rating": "R",
+          "week_in_release": 5,
+          "source": "scheduled",
+          "is_new_release": false,
+          "holdover_estimated": true
+        }
+      ]
+    },
+    {
+      "friday": "2026-08-07",
+      "week_of_year": 32,
+      "historical_slot": {
+        "median_total_gross": 131243011,
+        "sample_weekends": 11,
+        "genre_stats": {}
+      },
+      "events": [],
+      "competition": []
+    },
+    {
+      "friday": "2026-08-14",
+      "week_of_year": 33,
+      "historical_slot": {
+        "median_total_gross": 97390629,
+        "sample_weekends": 11,
+        "genre_stats": {}
+      },
+      "events": [],
+      "competition": []
+    },
+    {
+      "friday": "2026-08-21",
+      "week_of_year": 34,
+      "historical_slot": {
+        "median_total_gross": 88824353,
+        "sample_weekends": 11,
+        "genre_stats": {
+          "Drama": {
+            "median_gross": 1514278,
+            "sample_size": 1
+          }
+        }
+      },
+      "events": [],
+      "competition": []
+    },
+    {
+      "friday": "2026-08-28",
+      "week_of_year": 35,
+      "historical_slot": {
+        "median_total_gross": 87836416,
+        "sample_weekends": 8,
+        "genre_stats": {
+          "Drama": {
+            "median_gross": 1220871,
+            "sample_size": 1
+          }
+        }
+      },
+      "events": [],
+      "competition": []
+    },
+    {
+      "friday": "2026-09-04",
+      "week_of_year": 36,
+      "historical_slot": {
+        "median_total_gross": 100847907,
+        "sample_weekends": 11,
+        "genre_stats": {
+          "Drama": {
+            "median_gross": 465035,
+            "sample_size": 1
+          }
+        }
+      },
+      "events": [
+        {
+          "name": "Labor Day (3-day)",
+          "boost": 0.9,
+          "kind": "three_day"
+        }
+      ],
+      "competition": []
+    },
+    {
+      "friday": "2026-09-11",
+      "week_of_year": 37,
+      "historical_slot": {
+        "median_total_gross": 93734642,
+        "sample_weekends": 11,
+        "genre_stats": {
+          "Drama": {
+            "median_gross": 2035273,
+            "sample_size": 2
+          }
+        }
+      },
+      "events": [],
+      "competition": []
+    },
+    {
+      "friday": "2026-09-18",
+      "week_of_year": 38,
+      "historical_slot": {
+        "median_total_gross": 81812467,
+        "sample_weekends": 11,
+        "genre_stats": {
+          "Drama": {
+            "median_gross": 1005715,
+            "sample_size": 1
+          }
+        }
+      },
+      "events": [],
+      "competition": []
+    },
+    {
+      "friday": "2026-09-25",
+      "week_of_year": 39,
+      "historical_slot": {
+        "median_total_gross": 94527126,
+        "sample_weekends": 7,
+        "genre_stats": {}
+      },
+      "events": [],
+      "competition": []
+    },
+    {
+      "friday": "2026-10-02",
+      "week_of_year": 40,
+      "historical_slot": {
+        "median_total_gross": 104318304,
+        "sample_weekends": 11,
+        "genre_stats": {
+          "Drama": {
+            "median_gross": 681655,
+            "sample_size": 2
+          }
+        }
+      },
+      "events": [],
+      "competition": []
+    },
+    {
+      "friday": "2026-10-09",
+      "week_of_year": 41,
+      "historical_slot": {
+        "median_total_gross": 100461379,
+        "sample_weekends": 11,
+        "genre_stats": {
+          "Drama": {
+            "median_gross": 140145,
+            "sample_size": 1
+          }
+        }
+      },
+      "events": [],
+      "competition": []
+    },
+    {
+      "friday": "2026-10-16",
+      "week_of_year": 42,
+      "historical_slot": {
+        "median_total_gross": 95980741,
+        "sample_weekends": 11,
+        "genre_stats": {}
+      },
+      "events": [],
+      "competition": []
+    },
+    {
+      "friday": "2026-10-23",
+      "week_of_year": 43,
+      "historical_slot": {
+        "median_total_gross": 88827696,
+        "sample_weekends": 11,
+        "genre_stats": {
+          "Documentary": {
+            "median_gross": 5051950,
+            "sample_size": 1
+          },
+          "Drama": {
+            "median_gross": 130701,
+            "sample_size": 1
+          }
+        }
+      },
+      "events": [],
+      "competition": []
+    },
+    {
+      "friday": "2026-10-30",
+      "week_of_year": 44,
+      "historical_slot": {
+        "median_total_gross": 115484817,
+        "sample_weekends": 8,
+        "genre_stats": {
+          "Documentary": {
+            "median_gross": 2002028,
+            "sample_size": 1
+          },
+          "Comedy": {
+            "median_gross": 16759161,
+            "sample_size": 1
+          },
+          "Drama": {
+            "median_gross": 792760,
+            "sample_size": 2
+          }
+        }
+      },
+      "events": [
+        {
+          "name": "Halloween",
+          "boost": 0.8,
+          "kind": "holiday"
+        }
+      ],
+      "competition": []
+    },
+    {
+      "friday": "2026-11-06",
+      "week_of_year": 45,
+      "historical_slot": {
+        "median_total_gross": 121321449,
+        "sample_weekends": 11,
+        "genre_stats": {
+          "Documentary": {
+            "median_gross": 826261,
+            "sample_size": 1
+          },
+          "Comedy": {
+            "median_gross": 11468964,
+            "sample_size": 1
+          },
+          "Drama": {
+            "median_gross": 368695,
+            "sample_size": 1
+          }
+        }
+      },
+      "events": [],
+      "competition": []
+    },
+    {
+      "friday": "2026-11-13",
+      "week_of_year": 46,
+      "historical_slot": {
+        "median_total_gross": 108047802,
+        "sample_weekends": 11,
+        "genre_stats": {
+          "Comedy": {
+            "median_gross": 7000378,
+            "sample_size": 1
+          }
+        }
+      },
+      "events": [],
+      "competition": []
+    },
+    {
+      "friday": "2026-11-20",
+      "week_of_year": 47,
+      "historical_slot": {
+        "median_total_gross": 182169091,
+        "sample_weekends": 11,
+        "genre_stats": {
+          "Comedy": {
+            "median_gross": 4895568,
+            "sample_size": 1
+          }
+        }
+      },
+      "events": [
+        {
+          "name": "Thanksgiving (5-day)",
+          "boost": 1.0,
+          "kind": "holiday"
+        }
+      ],
+      "competition": []
+    },
+    {
+      "friday": "2026-11-27",
+      "week_of_year": 48,
+      "historical_slot": {
+        "median_total_gross": 97128796,
+        "sample_weekends": 8,
+        "genre_stats": {
+          "Comedy": {
+            "median_gross": 3385484,
+            "sample_size": 1
+          }
+        }
+      },
+      "events": [],
+      "competition": []
+    },
+    {
+      "friday": "2026-12-04",
+      "week_of_year": 49,
+      "historical_slot": {
+        "median_total_gross": 84873861,
+        "sample_weekends": 11,
+        "genre_stats": {
+          "Comedy": {
+            "median_gross": 2581446,
+            "sample_size": 1
+          }
+        }
+      },
+      "events": [],
+      "competition": []
+    },
+    {
+      "friday": "2026-12-11",
+      "week_of_year": 50,
+      "historical_slot": {
+        "median_total_gross": 117816850,
+        "sample_weekends": 11,
+        "genre_stats": {
+          "Comedy": {
+            "median_gross": 1011180,
+            "sample_size": 1
+          }
+        }
+      },
+      "events": [],
+      "competition": []
+    },
+    {
+      "friday": "2026-12-18",
+      "week_of_year": 51,
+      "historical_slot": {
+        "median_total_gross": 178168406,
+        "sample_weekends": 11,
+        "genre_stats": {}
+      },
+      "events": [],
+      "competition": []
+    },
+    {
+      "friday": "2026-12-25",
+      "week_of_year": 52,
+      "historical_slot": {
+        "median_total_gross": 188210389,
+        "sample_weekends": 8,
+        "genre_stats": {}
+      },
+      "events": [
+        {
+          "name": "Christmas",
+          "boost": 1.0,
+          "kind": "holiday"
+        },
+        {
+          "name": "New Year's Eve",
+          "boost": 0.7,
+          "kind": "holiday"
+        }
+      ],
+      "competition": []
+    },
+    {
+      "friday": "2027-01-01",
+      "week_of_year": 53,
+      "historical_slot": {},
+      "events": [],
+      "competition": []
+    },
+    {
+      "friday": "2027-01-08",
+      "week_of_year": 1,
+      "historical_slot": {},
+      "events": [],
+      "competition": []
+    },
+    {
+      "friday": "2027-01-15",
+      "week_of_year": 2,
+      "historical_slot": {},
+      "events": [
+        {
+          "name": "MLK Day (3-day)",
+          "boost": 0.55,
+          "kind": "three_day"
+        }
+      ],
+      "competition": []
+    },
+    {
+      "friday": "2027-01-22",
+      "week_of_year": 3,
+      "historical_slot": {},
+      "events": [],
+      "competition": []
+    },
+    {
+      "friday": "2027-01-29",
+      "week_of_year": 4,
+      "historical_slot": {},
+      "events": [],
+      "competition": []
+    },
+    {
+      "friday": "2027-02-05",
+      "week_of_year": 5,
+      "historical_slot": {},
+      "events": [],
+      "competition": []
+    },
+    {
+      "friday": "2027-02-12",
+      "week_of_year": 6,
+      "historical_slot": {},
+      "events": [
+        {
+          "name": "Valentine's Day",
+          "boost": 0.85,
+          "kind": "holiday"
+        },
+        {
+          "name": "Presidents Day (3-day)",
+          "boost": 0.6,
+          "kind": "three_day"
+        }
+      ],
+      "competition": []
+    },
+    {
+      "friday": "2027-02-19",
+      "week_of_year": 7,
+      "historical_slot": {},
+      "events": [],
+      "competition": []
+    },
+    {
+      "friday": "2027-02-26",
+      "week_of_year": 8,
+      "historical_slot": {},
+      "events": [],
+      "competition": []
+    },
+    {
+      "friday": "2027-03-05",
+      "week_of_year": 9,
+      "historical_slot": {
+        "median_total_gross": 161499059,
+        "sample_weekends": 2,
+        "genre_stats": {}
+      },
+      "events": [],
+      "competition": []
+    },
+    {
+      "friday": "2027-03-12",
+      "week_of_year": 10,
+      "historical_slot": {
+        "median_total_gross": 118089113,
+        "sample_weekends": 12,
+        "genre_stats": {}
+      },
+      "events": [
+        {
+          "name": "Oscar weekend",
+          "boost": 0.5,
+          "kind": "oscar"
+        }
+      ],
+      "competition": []
+    },
+    {
+      "friday": "2027-03-19",
+      "week_of_year": 11,
+      "historical_slot": {
+        "median_total_gross": 92184348,
+        "sample_weekends": 12,
+        "genre_stats": {}
+      },
+      "events": [],
+      "competition": []
+    },
+    {
+      "friday": "2027-03-26",
+      "week_of_year": 12,
+      "historical_slot": {
+        "median_total_gross": 130423221,
+        "sample_weekends": 12,
+        "genre_stats": {}
+      },
+      "events": [
+        {
+          "name": "Easter weekend",
+          "boost": 0.65,
+          "kind": "holiday"
+        }
+      ],
+      "competition": []
+    },
+    {
+      "friday": "2027-04-02",
+      "week_of_year": 13,
+      "historical_slot": {
+        "median_total_gross": 97401546,
+        "sample_weekends": 9,
+        "genre_stats": {}
+      },
+      "events": [],
+      "competition": []
+    },
+    {
+      "friday": "2027-04-09",
+      "week_of_year": 14,
+      "historical_slot": {
+        "median_total_gross": 146937939,
+        "sample_weekends": 12,
+        "genre_stats": {}
+      },
+      "events": [],
+      "competition": []
+    },
+    {
+      "friday": "2027-04-16",
+      "week_of_year": 15,
+      "historical_slot": {
+        "median_total_gross": 131496504,
+        "sample_weekends": 12,
+        "genre_stats": {
+          "Horror": {
+            "median_gross": 1647717,
+            "sample_size": 1
+          }
+        }
+      },
+      "events": [],
+      "competition": []
+    },
+    {
+      "friday": "2027-04-23",
+      "week_of_year": 16,
+      "historical_slot": {
+        "median_total_gross": 109192341,
+        "sample_weekends": 12,
+        "genre_stats": {
+          "Horror": {
+            "median_gross": 13517172,
+            "sample_size": 2
+          },
+          "Comedy": {
+            "median_gross": 1650000,
+            "sample_size": 1
+          }
+        }
+      },
+      "events": [],
+      "competition": []
+    },
+    {
+      "friday": "2027-04-30",
+      "week_of_year": 17,
+      "historical_slot": {
+        "median_total_gross": 100199383,
+        "sample_weekends": 9,
+        "genre_stats": {
+          "Horror": {
+            "median_gross": 5501140,
+            "sample_size": 1
+          }
+        }
+      },
+      "events": [],
+      "competition": []
+    },
+    {
+      "friday": "2027-05-07",
+      "week_of_year": 18,
+      "historical_slot": {
+        "median_total_gross": 172970858,
+        "sample_weekends": 12,
+        "genre_stats": {
+          "Horror": {
+            "median_gross": 2201007,
+            "sample_size": 1
+          }
+        }
+      },
+      "events": [],
+      "competition": []
+    },
+    {
+      "friday": "2027-05-14",
+      "week_of_year": 19,
+      "historical_slot": {
+        "median_total_gross": 130908594,
+        "sample_weekends": 12,
+        "genre_stats": {
+          "Horror": {
+            "median_gross": 556167,
+            "sample_size": 1
+          }
+        }
+      },
+      "events": [],
+      "competition": []
+    },
+    {
+      "friday": "2027-05-21",
+      "week_of_year": 20,
+      "historical_slot": {
+        "median_total_gross": 121759667,
+        "sample_weekends": 12,
+        "genre_stats": {}
+      },
+      "events": [],
+      "competition": []
+    },
+    {
+      "friday": "2027-05-28",
+      "week_of_year": 21,
+      "historical_slot": {
+        "median_total_gross": 164137607,
+        "sample_weekends": 12,
+        "genre_stats": {
+          "Comedy": {
+            "median_gross": 4321148,
+            "sample_size": 1
+          }
+        }
+      },
+      "events": [
+        {
+          "name": "Memorial Day (3-day)",
+          "boost": 0.95,
+          "kind": "three_day"
+        }
+      ],
+      "competition": []
+    },
+    {
+      "friday": "2027-06-04",
+      "week_of_year": 22,
+      "historical_slot": {
+        "median_total_gross": 135001702,
+        "sample_weekends": 9,
+        "genre_stats": {
+          "Comedy": {
+            "median_gross": 2390164,
+            "sample_size": 2
+          }
+        }
+      },
+      "events": [],
+      "competition": []
+    },
+    {
+      "friday": "2027-06-11",
+      "week_of_year": 23,
+      "historical_slot": {
+        "median_total_gross": 132771309,
+        "sample_weekends": 11,
+        "genre_stats": {
+          "Comedy": {
+            "median_gross": 951998,
+            "sample_size": 2
+          }
+        }
+      },
+      "events": [],
+      "competition": []
+    }
+  ],
+  "scheduled_releases": [
+    {
+      "title": "The Amazing Digital Circus: The Last Act",
+      "release_date": "2026-06-04",
+      "opening_friday": "2026-06-05",
+      "genres": [
+        "Adventure",
+        "Animation",
+        "Comedy",
+        "Drama",
+        "Horror",
+        "Mystery",
+        "Sci-Fi"
+      ],
+      "distributor": null,
+      "scale": "Wide",
+      "imdb_id": "tt41635245",
+      "mpaa_rating": null
+    },
+    {
+      "title": "Power Ballad",
+      "release_date": "2026-06-05",
+      "opening_friday": "2026-06-05",
+      "genres": [
+        "Comedy",
+        "Drama",
+        "Music",
+        "Musical"
+      ],
+      "distributor": "Lionsgate",
+      "scale": "Wide",
+      "imdb_id": "tt32267691",
+      "mpaa_rating": "R"
+    },
+    {
+      "title": "The Currents",
+      "release_date": "2026-06-05",
+      "opening_friday": "2026-06-05",
+      "genres": [
+        "Drama"
+      ],
+      "distributor": "Kino Lorber",
+      "scale": "Wide",
+      "imdb_id": "tt35746682",
+      "mpaa_rating": null
+    },
+    {
+      "title": "Scary Movie",
+      "release_date": "2026-06-05",
+      "opening_friday": "2026-06-05",
+      "genres": [
+        "Comedy",
+        "Horror"
+      ],
+      "distributor": "Paramount Pictures",
+      "scale": "Wide",
+      "imdb_id": "tt32093575",
+      "mpaa_rating": "R"
+    },
+    {
+      "title": "Masters of the Universe",
+      "release_date": "2026-06-05",
+      "opening_friday": "2026-06-05",
+      "genres": [
+        "Action",
+        "Adventure",
+        "Fantasy",
+        "Sci-Fi"
+      ],
+      "distributor": "Amazon MGM Studios",
+      "scale": "Wide",
+      "imdb_id": "tt0427340",
+      "mpaa_rating": "PG-13"
+    },
+    {
+      "title": "Stop! That! Train!",
+      "release_date": "2026-06-12",
+      "opening_friday": "2026-06-12",
+      "genres": [
+        "Action",
+        "Comedy"
+      ],
+      "distributor": "N/A",
+      "scale": "Wide",
+      "imdb_id": "tt38128726",
+      "mpaa_rating": "R"
+    },
+    {
+      "title": "Disclosure Day",
+      "release_date": "2026-06-12",
+      "opening_friday": "2026-06-12",
+      "genres": [
+        "Drama",
+        "Sci-Fi",
+        "Thriller"
+      ],
+      "distributor": "Universal Pictures",
+      "scale": "Wide",
+      "imdb_id": "tt15047880",
+      "mpaa_rating": "PG-13"
+    },
+    {
+      "title": "Jinsei",
+      "release_date": "2026-06-12",
+      "opening_friday": "2026-06-12",
+      "genres": [
+        "Animation",
+        "Drama"
+      ],
+      "distributor": "Greenwich Entertainment",
+      "scale": "Wide",
+      "imdb_id": "tt36639420",
+      "mpaa_rating": null
+    },
+    {
+      "title": "Diamond Made Man",
+      "release_date": "2026-06-16",
+      "opening_friday": "2026-06-19",
+      "genres": [
+        "Action",
+        "Sci-Fi"
+      ],
+      "distributor": "N/A",
+      "scale": "Wide",
+      "imdb_id": "tt39674832",
+      "mpaa_rating": null
+    },
+    {
+      "title": "O Horizon",
+      "release_date": "2026-06-19",
+      "opening_friday": "2026-06-19",
+      "genres": [
+        "Comedy",
+        "Drama",
+        "Romance",
+        "Sci-Fi"
+      ],
+      "distributor": "Variance Films",
+      "scale": "Wide",
+      "imdb_id": "tt25971256",
+      "mpaa_rating": null
+    },
+    {
+      "title": "Toy Story 5",
+      "release_date": "2026-06-19",
+      "opening_friday": "2026-06-19",
+      "genres": [
+        "Adventure",
+        "Animation",
+        "Comedy",
+        "Drama",
+        "Family",
+        "Fantasy"
+      ],
+      "distributor": "Walt Disney Studios Motion Pictures",
+      "scale": "Wide",
+      "imdb_id": "tt29355505",
+      "mpaa_rating": "PG"
+    },
+    {
+      "title": "The Death of Robin Hood",
+      "release_date": "2026-06-19",
+      "opening_friday": "2026-06-19",
+      "genres": [
+        "Action",
+        "Adventure",
+        "Drama"
+      ],
+      "distributor": "A24",
+      "scale": "Wide",
+      "imdb_id": "tt32273171",
+      "mpaa_rating": "R"
+    },
+    {
+      "title": "Jackass: Best and Last",
+      "release_date": "2026-06-26",
+      "opening_friday": "2026-06-26",
+      "genres": [
+        "Comedy",
+        "Documentary"
+      ],
+      "distributor": "Paramount Pictures",
+      "scale": "Wide",
+      "imdb_id": "tt39316472",
+      "mpaa_rating": null
+    },
+    {
+      "title": "Supergirl",
+      "release_date": "2026-06-26",
+      "opening_friday": "2026-06-26",
+      "genres": [
+        "Action",
+        "Adventure",
+        "Drama",
+        "Sci-Fi"
+      ],
+      "distributor": "Warner Bros.",
+      "scale": "Wide",
+      "imdb_id": "tt8814476",
+      "mpaa_rating": "PG-13"
+    },
+    {
+      "title": "Couture",
+      "release_date": "2026-06-26",
+      "opening_friday": "2026-06-26",
+      "genres": [
+        "Drama"
+      ],
+      "distributor": "Vertical Entertainment",
+      "scale": "Wide",
+      "imdb_id": "tt34688195",
+      "mpaa_rating": "R"
+    },
+    {
+      "title": "Minions & Monsters",
+      "release_date": "2026-07-01",
+      "opening_friday": "2026-07-03",
+      "genres": [
+        "Adventure",
+        "Animation",
+        "Comedy",
+        "Crime",
+        "Family",
+        "Sci-Fi"
+      ],
+      "distributor": "Universal Pictures",
+      "scale": "Wide",
+      "imdb_id": "tt32890033",
+      "mpaa_rating": "PG"
+    },
+    {
+      "title": "Thrash",
+      "release_date": "2026-07-03",
+      "opening_friday": "2026-07-03",
+      "genres": [
+        "Horror",
+        "Thriller"
+      ],
+      "distributor": "Sony Pictures Releasing",
+      "scale": "Wide",
+      "imdb_id": "tt32362890",
+      "mpaa_rating": "R"
+    }
+  ]
+}

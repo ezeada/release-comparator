@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Slate Setter — Release Weekend Intelligence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <div class="brand">
+        <span class="brand-mark"></span>
+        <div>
+          <h1>Slate Setter</h1>
+          <p class="tagline">Domestic release weekend intelligence</p>
+        </div>
+      </div>
+      <button type="button" class="ghost-btn" id="params-btn" aria-expanded="false">
+        Scoring parameters
+      </button>
+    </header>
+
+    <aside class="params-panel hidden" id="params-panel" aria-label="Scoring parameters">
+      <h2>How weekends are scored</h2>
+      <p class="muted">Composite score (0–100) from five factors. Weights below drive the overall rank.</p>
+      <ul class="weight-list" id="weight-list"></ul>
+      <dl class="assumptions">
+        <dt>Holdover assumption</dt>
+        <dd id="param-holdover">—</dd>
+        <dt>Wide release threshold</dt>
+        <dd id="param-wide">—</dd>
+        <dt>Historical window</dt>
+        <dd id="param-history">—</dd>
+        <dt>Data refreshed</dt>
+        <dd id="param-refreshed">—</dd>
+        <dt>Data quality</dt>
+        <dd id="param-quality">—</dd>
+      </dl>
+    </aside>
+
+    <section class="film-form card">
+      <h2>Your film</h2>
+      <div class="form-grid">
+        <label>
+          Title <span class="optional">(optional)</span>
+          <input type="text" id="film-title" placeholder="e.g. Undertone" autocomplete="off" />
+        </label>
+        <label>
+          Primary genre
+          <select id="film-genre" required></select>
+        </label>
+        <label>
+          MPAA rating
+          <select id="film-rating" required></select>
+        </label>
+      </div>
+      <div class="form-actions">
+        <button type="button" class="primary-btn" id="rank-btn">Rank weekends</button>
+        <label class="compare-toggle">
+          <input type="checkbox" id="compare-mode" />
+          Compare mode <span class="muted">(pick 2 weekends)</span>
+        </label>
+      </div>
+    </section>
+
+    <div class="view-tabs">
+      <button type="button" class="tab active" data-view="ranked">Ranked list</button>
+      <button type="button" class="tab" data-view="calendar">Calendar</button>
+    </div>
+
+    <section class="results card" id="ranked-view">
+      <div class="results-header">
+        <h2>Weekend rankings</h2>
+        <p class="muted" id="results-summary">Configure your film to see ranked release weekends.</p>
+      </div>
+      <div class="ranked-list" id="ranked-list"></div>
+    </section>
+
+    <section class="results card hidden" id="calendar-view">
+      <div class="results-header">
+        <h2>12-month calendar</h2>
+        <p class="muted">Color intensity reflects composite score for your film.</p>
+      </div>
+      <div class="calendar-legend">
+        <span>Lower score</span>
+        <span class="legend-bar"></span>
+        <span>Higher score</span>
+      </div>
+      <div class="calendar-grid" id="calendar-grid"></div>
+    </section>
+
+    <section class="compare-panel card hidden" id="compare-panel">
+      <h2>Weekend comparison</h2>
+      <div class="compare-columns" id="compare-columns"></div>
+    </section>
+
+    <footer class="footer">
+      <p>US domestic · Fri–Sun weekends · Cached industry data · Not affiliated with any studio</p>
+    </footer>
+  </div>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
