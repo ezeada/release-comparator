@@ -1,6 +1,6 @@
 # Release Ranking
 
-Release weekend intelligence for theatrical distribution teams. Enter your film's genre and MPAA rating, get a ranked list of domestic Fri–Sun weekends for the next 12 months, and drill into competition, historical analogs, and factor-level scores.
+Enter your film's genre and MPAA rating, get a ranked list of domestic Fri–Sun weekends for the next 12 months, and drill into competition, historical analogs, and factor-level scores.
 
 Live demo: enable GitHub Pages on this repo (Settings → Pages → Source: GitHub Actions). The app ships from `/docs`.
 
