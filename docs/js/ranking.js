@@ -4,7 +4,7 @@ const FACTOR_LABELS = {
   market_strength: "Successful weekend",
   genre_strength: "In-genre historical strength",
   calendar_boost: "Calendar / holiday boost",
-  crowding: "Low competition (wide releases)",
+  crowding: "Competition (wide releases)",
   audience_overlap: "Low audience overlap",
 };
 
@@ -13,7 +13,7 @@ const FACTOR_DESCRIPTIONS = {
   genre_strength: "How well your genre has performed in this same week-of-year historically.",
   calendar_boost: "Boost from holidays, 3-day weekends, Oscar season, and seasonal events.",
   crowding: "Fewer wide releases means more screens and attention available.",
-  audience_overlap: "Lower overlap with same-genre and same-rating films currently in market.",
+  audience_overlap: "Lower overlap with films sharing both your genre and MPAA rating in market.",
 };
 
 function clamp(value, min = 0, max = 100) {
@@ -35,28 +35,34 @@ function genreOverlapScore(filmGenres, filmRating, competition, invertForDisplay
 
   let overlap = 0;
   for (const comp of competition) {
-    const sharedGenres = (comp.genres || []).filter((g) => filmGenres.includes(g));
-    const genreMatch = sharedGenres.length > 0 ? 1 : 0;
-    const ratingMatch = comp.mpaa_rating && filmRating && comp.mpaa_rating === filmRating ? 1 : 0;
+    const genreMatch = (comp.genres || []).some((g) => filmGenres.includes(g));
+    const ratingMatch = comp.mpaa_rating && filmRating && comp.mpaa_rating === filmRating;
+    if (!genreMatch || !ratingMatch) continue;
+
     const weekWeight = comp.is_new_release ? 1 : 0.65;
-    overlap += (genreMatch * 0.75 + ratingMatch * 0.25) * weekWeight;
+    overlap += weekWeight;
   }
 
-  const normalized = clamp((overlap / competition.length) * 100);
+  const normalized = clamp(Math.round((overlap / competition.length) * 100));
   return invertForDisplay ? clamp(100 - normalized) : normalized;
 }
 
 function calendarBoostScore(events) {
-  if (!events?.length) return 35;
-  const boost = events.reduce((sum, e) => sum + (e.boost || 0), 0);
-  return clamp(Math.round(Math.min(boost, 1) * 100));
+  return events?.length ? 100 : 0;
 }
 
-function crowdingScore(competition) {
-  const wideNew = competition.filter((c) => c.is_new_release).length;
-  const holdovers = competition.filter((c) => !c.is_new_release).length;
-  const load = wideNew * 1.2 + holdovers * 0.5;
-  return clamp(Math.round(100 - load * 12));
+function crowdingScore(competition, historicalSlot, usingHistoricalFallback) {
+  if (competition.length) {
+    const wideNew = competition.filter((c) => c.is_new_release).length;
+    const holdovers = competition.filter((c) => !c.is_new_release).length;
+    const load = wideNew * 1.2 + holdovers * 0.5;
+    return clamp(Math.round(100 - load * 12));
+  }
+  const typical = historicalSlot?.median_wide_count ?? 0;
+  if (typical) {
+    return clamp(Math.round(100 - typical * 12));
+  }
+  return usingHistoricalFallback ? 55 : 70;
 }
 
 function marketStrengthScore(weekOfYear, historicalWeekends, friday) {
@@ -98,23 +104,263 @@ function formatMoney(n) {
   return `$${n}`;
 }
 
-export function rankWeekends(data, { genre, rating, title }) {
-  const weights = data.config.weights;
-  const historicalWeekends = data.historical_weekends || [];
-  const historicalSlots = data.historical_slots || {};
+const WEIGHT_KEYS = [
+  "market_strength",
+  "genre_strength",
+  "calendar_boost",
+  "crowding",
+  "audience_overlap",
+];
 
-  const ranked = (data.future_weekends || []).map((weekend) => {
-    const competition = weekend.competition || [];
+function yearFromFriday(friday) {
+  return parseInt(friday.slice(0, 4), 10);
+}
+
+function weeksBetween(openFriday, targetFriday) {
+  const open = new Date(openFriday + "T12:00:00");
+  const target = new Date(targetFriday + "T12:00:00");
+  return Math.round((target - open) / (7 * 24 * 60 * 60 * 1000));
+}
+
+function normalizeWeights(weights) {
+  const total = WEIGHT_KEYS.reduce((sum, key) => sum + (weights[key] ?? 0), 0);
+  if (!total) return { ...weights };
+  const normalized = {};
+  for (const key of WEIGHT_KEYS) {
+    normalized[key] = (weights[key] ?? 0) / total;
+  }
+  return normalized;
+}
+
+export function defaultScoringParams(data) {
+  const years = data.metadata.years_covered || [];
+  return {
+    weights: { ...data.config.weights },
+    holdoverWeeks: data.metadata.holdover_weeks_assumption ?? 5,
+    wideThreshold: data.metadata.wide_theater_threshold ?? 600,
+    historyYearMin: years[0] ?? 2015,
+    historyYearMax: years.at(-1) ?? new Date().getFullYear(),
+  };
+}
+
+function filterByHistoryYear(items, params, { yearField = "year", dateField = "friday" } = {}) {
+  return items.filter((item) => {
+    const year = item[yearField] ?? yearFromFriday(item[dateField]);
+    return year >= params.historyYearMin && year <= params.historyYearMax;
+  });
+}
+
+function buildHistoricalSlots(historicalWeekends, wideOpeners) {
+  const slotTotals = {};
+  const slotWideCounts = {};
+  const slotGenreGross = {};
+
+  for (const weekend of historicalWeekends) {
+    const woy = weekend.week_of_year;
+    slotTotals[woy] = slotTotals[woy] || [];
+    slotTotals[woy].push(weekend.total_gross);
+    slotWideCounts[woy] = slotWideCounts[woy] || [];
+    slotWideCounts[woy].push(weekend.wide_release_count);
+  }
+
+  for (const entry of wideOpeners) {
+    const woy = entry.week_of_year;
+    for (const genre of entry.genres || []) {
+      slotGenreGross[woy] = slotGenreGross[woy] || {};
+      slotGenreGross[woy][genre] = slotGenreGross[woy][genre] || [];
+      slotGenreGross[woy][genre].push(entry.gross);
+    }
+  }
+
+  const slots = {};
+  for (const [woy, totals] of Object.entries(slotTotals)) {
+    const totalsSorted = [...totals].sort((a, b) => a - b);
+    const median = totalsSorted[Math.floor(totalsSorted.length / 2)];
+    const genreStats = {};
+    for (const [genre, grosses] of Object.entries(slotGenreGross[woy] || {})) {
+      const gSorted = [...grosses].sort((a, b) => a - b);
+      genreStats[genre] = {
+        median_gross: gSorted[Math.floor(gSorted.length / 2)],
+        sample_size: grosses.length,
+      };
+    }
+    const wideCounts = [...(slotWideCounts[woy] || [])].sort((a, b) => a - b);
+    slots[woy] = {
+      median_total_gross: median,
+      median_wide_count: wideCounts.length ? wideCounts[Math.floor(wideCounts.length / 2)] : 0,
+      sample_weekends: totals.length,
+      genre_stats: genreStats,
+    };
+  }
+  return slots;
+}
+
+function resolvePosterUrl(film, posterLookup = {}) {
+  return film.poster_url || posterLookup[film.imdb_id] || posterLookup[film.title] || null;
+}
+
+function filmPayload(film, extra = {}, posterLookup = {}) {
+  return {
+    title: film.title,
+    genres: film.genres || [],
+    mpaa_rating: film.mpaa_rating,
+    imdb_id: film.imdb_id,
+    poster_url: resolvePosterUrl(film, posterLookup),
+    ...extra,
+  };
+}
+
+function activeFilmsForWeekend(friday, scheduled, holdovers, holdoverWeeks, posterLookup = {}) {
+  const active = [];
+
+  for (const film of holdovers || []) {
+    const weeksOut = weeksBetween(film.opening_friday, friday);
+    if (weeksOut >= 0 && weeksOut < holdoverWeeks) {
+      active.push(
+        filmPayload(
+          film,
+          {
+            week_in_release: weeksOut + 1,
+            source: "current_holdover",
+            is_new_release: weeksOut === 0,
+            holdover_estimated: friday > film.anchor_friday,
+          },
+          posterLookup
+        )
+      );
+    }
+  }
+
+  for (const film of scheduled || []) {
+    const weeksOut = weeksBetween(film.opening_friday, friday);
+    if (weeksOut >= 0 && weeksOut < holdoverWeeks) {
+      active.push(
+        filmPayload(
+          film,
+          {
+            week_in_release: weeksOut + 1,
+            source: "scheduled",
+            is_new_release: weeksOut === 0,
+            holdover_estimated: weeksOut > 0,
+          },
+          posterLookup
+        )
+      );
+    }
+  }
+
+  return active;
+}
+
+function historicalAnalogCompetition(weekOfYear, wideOpeners, posterLookup = {}) {
+  const seen = new Set();
+  const analogs = [];
+
+  const sorted = [...wideOpeners].sort((a, b) => b.year - a.year);
+  for (const entry of sorted) {
+    if (entry.week_of_year !== weekOfYear) continue;
+    if (seen.has(entry.title)) continue;
+    seen.add(entry.title);
+    analogs.push(
+      filmPayload(
+        entry,
+        {
+          week_in_release: 1,
+          source: "historical_analog",
+          is_new_release: true,
+          holdover_estimated: false,
+          analog_year: entry.year,
+          analog_gross: entry.gross,
+        },
+        posterLookup
+      )
+    );
+    if (analogs.length >= 8) break;
+  }
+
+  analogs.sort((a, b) => (b.analog_gross || 0) - (a.analog_gross || 0));
+  return analogs.slice(0, 8);
+}
+
+function hasScoringSources(data) {
+  return Array.isArray(data.historical_wide_openers) && data.historical_wide_openers.length > 0;
+}
+
+function prepareScoringData(data, scoringParams) {
+  const params = scoringParams;
+  const filteredWeekends = filterByHistoryYear(data.historical_weekends || [], params);
+
+  if (!hasScoringSources(data)) {
+    return {
+      historicalWeekends: filteredWeekends,
+      historicalSlots: data.historical_slots || {},
+      futureWeekends: data.future_weekends || [],
+      weights: normalizeWeights(params.weights),
+    };
+  }
+
+  const filteredOpeners = filterByHistoryYear(data.historical_wide_openers || [], params).filter(
+    (entry) => (entry.theaters || 0) >= params.wideThreshold
+  );
+  const historicalSlots = buildHistoricalSlots(filteredWeekends, filteredOpeners);
+  const scheduled = data.scheduled_releases || [];
+  const holdovers = data.current_holdovers || [];
+  const posterLookup = data.poster_lookup || {};
+
+  const futureWeekends = (data.future_weekends || []).map((weekend) => {
+    const scheduledCompetition = activeFilmsForWeekend(
+      weekend.friday,
+      scheduled,
+      holdovers,
+      params.holdoverWeeks,
+      posterLookup
+    );
+    const historicalCompetition = historicalAnalogCompetition(
+      weekend.week_of_year,
+      filteredOpeners,
+      posterLookup
+    );
+    return {
+      ...weekend,
+      competition: scheduledCompetition,
+      historical_competition: historicalCompetition,
+      competition_is_estimated: scheduledCompetition.length === 0,
+    };
+  });
+
+  return {
+    historicalWeekends: filteredWeekends,
+    historicalSlots,
+    futureWeekends,
+    weights: normalizeWeights(params.weights),
+  };
+}
+
+export function rankWeekends(data, { genre, rating, title }, scoringParams = null) {
+  const params = scoringParams || defaultScoringParams(data);
+  const prepared = prepareScoringData(data, params);
+  const weights = prepared.weights;
+  const historicalWeekends = prepared.historicalWeekends;
+  const historicalSlots = prepared.historicalSlots;
+
+  const ranked = prepared.futureWeekends.map((weekend) => {
+    const scheduledCompetition = weekend.competition || [];
+    const historicalCompetition = weekend.historical_competition || [];
+    const allCompetition = [...scheduledCompetition, ...historicalCompetition];
+    const competition =
+      scheduledCompetition.length > 0 ? scheduledCompetition : historicalCompetition;
+    const usingHistoricalFallback =
+      scheduledCompetition.length === 0 && historicalCompetition.length > 0;
+    const slot = historicalSlots[String(weekend.week_of_year)] || {};
+
     const factors = {
-      market_strength: marketStrengthScore(
-        weekend.week_of_year,
-        historicalWeekends,
-        weekend.friday
+      market_strength: Math.round(
+        marketStrengthScore(weekend.week_of_year, historicalWeekends, weekend.friday)
       ),
-      genre_strength: genreStrengthScore(genre, weekend.week_of_year, historicalSlots),
+      genre_strength: Math.round(genreStrengthScore(genre, weekend.week_of_year, historicalSlots)),
       calendar_boost: calendarBoostScore(weekend.events),
-      crowding: crowdingScore(competition),
-      audience_overlap: genreOverlapScore([genre], rating, competition, true),
+      crowding: Math.round(crowdingScore(competition, slot, usingHistoricalFallback)),
+      audience_overlap: Math.round(genreOverlapScore([genre], rating, competition, true)),
     };
 
     let composite = 0;
@@ -123,13 +369,12 @@ export function rankWeekends(data, { genre, rating, title }) {
     }
     composite = Math.round(composite);
 
-    const overlapFilms = competition.filter((c) => {
+    const overlapFilms = allCompetition.filter((c) => {
       const genreHit = (c.genres || []).includes(genre);
       const ratingHit = c.mpaa_rating && rating && c.mpaa_rating === rating;
-      return genreHit || ratingHit;
+      return genreHit && ratingHit;
     });
 
-    const slot = historicalSlots[String(weekend.week_of_year)] || {};
     const genreStat = slot.genre_stats?.[genre];
 
     const rationale = buildRationale({
@@ -140,6 +385,8 @@ export function rankWeekends(data, { genre, rating, title }) {
       overlapFilms,
       genreStat,
       slot,
+      usingHistoricalFallback,
+      scheduledCount: scheduledCompetition.length,
     });
 
     return {
@@ -148,7 +395,9 @@ export function rankWeekends(data, { genre, rating, title }) {
       composite,
       factors,
       events: weekend.events || [],
-      competition,
+      competition: scheduledCompetition,
+      historicalCompetition,
+      usingHistoricalFallback,
       overlapFilms,
       historicalAnalog: {
         medianMarket: slot.median_total_gross,
@@ -175,6 +424,8 @@ function buildRationale({
   overlapFilms,
   genreStat,
   slot,
+  usingHistoricalFallback,
+  scheduledCount,
 }) {
   const parts = [];
 
@@ -182,12 +433,20 @@ function buildRationale({
   else if (composite >= 55) parts.push("Solid window with some tradeoffs.");
   else parts.push("Challenging window — weigh competition carefully.");
 
-  if (factors.calendar_boost >= 70 && events.length) {
-    parts.push(`Calendar tailwind (${events.map((e) => e.name).join(", ")}).`);
+  if (usingHistoricalFallback) {
+    parts.push(
+      "No scheduled wide releases yet — showing historical analog titles for this calendar slot."
+    );
+  } else if (scheduledCount === 0) {
+    parts.push("Release schedule data is sparse for this weekend.");
+  }
+
+  if (factors.calendar_boost >= 100 && events.length) {
+    parts.push("Calendar holiday boost applies to this weekend.");
   }
 
   if (factors.audience_overlap >= 70) {
-    parts.push("Limited direct genre/rating overlap.");
+    parts.push("Limited direct genre-and-rating overlap.");
   } else if (overlapFilms.length) {
     parts.push(
       `Audience overlap with ${overlapFilms.slice(0, 2).map((f) => f.title).join(", ")}${overlapFilms.length > 2 ? "…" : ""}.`
@@ -211,9 +470,26 @@ function buildRationale({
   return parts.join(" ");
 }
 
+export function getWeekendFridays(data) {
+  return [...new Set((data.future_weekends || []).map((w) => w.friday))].sort();
+}
+
+function crowdingFactorLabel(score) {
+  if (score >= 75) return "Low competition (wide releases)";
+  if (score >= 50) return "Moderate competition (wide releases)";
+  return "High competition (wide releases)";
+}
+
+export function factorDisplayLabel(key, value) {
+  if (key === "crowding") return crowdingFactorLabel(value);
+  return FACTOR_LABELS[key];
+}
+
 export {
   FACTOR_LABELS,
   FACTOR_DESCRIPTIONS,
   formatFriday,
   formatMoney,
+  WEIGHT_KEYS,
+  normalizeWeights,
 };

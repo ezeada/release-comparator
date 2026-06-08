@@ -47,6 +47,24 @@ def _search_imdb_id(title: str) -> str | None:
     return None
 
 
+def _parse_genres(strings: list[str], start_idx: int) -> list[str]:
+    genres: list[str] = []
+    if start_idx + 1 >= len(strings):
+        return genres
+    block = strings[start_idx + 1]
+    if "\n" in block:
+        for line in block.splitlines():
+            line = line.strip()
+            if GENRE_PATTERN.match(line):
+                genres.append(line)
+        return genres
+    j = start_idx + 1
+    while j < len(strings) and GENRE_PATTERN.match(strings[j]):
+        genres.append(strings[j])
+        j += 1
+    return genres
+
+
 def _fetch_title_metadata(imdb_id: str) -> dict:
     url = f"https://www.boxofficemojo.com/title/{imdb_id}/"
     resp = requests.get(url, headers=HEADERS, timeout=30)
@@ -57,17 +75,100 @@ def _fetch_title_metadata(imdb_id: str) -> dict:
     mpaa: str | None = None
     strings = list(soup.stripped_strings)
     for idx, text in enumerate(strings):
-        if text == "Genres":
-            j = idx + 1
-            while j < len(strings) and GENRE_PATTERN.match(strings[j]):
-                genres.append(strings[j])
-                j += 1
+        if text == "Genres" and not genres:
+            genres = _parse_genres(strings, idx)
         if text == "MPAA" and idx + 1 < len(strings):
             candidate = strings[idx + 1]
             if candidate in VALID_RATINGS:
                 mpaa = candidate
 
-    return {"genres": genres, "mpaa_rating": mpaa}
+    poster_url: str | None = None
+    og_image = soup.find("meta", property="og:image")
+    if og_image and og_image.get("content"):
+        poster_url = og_image["content"]
+
+    return {"genres": genres, "mpaa_rating": mpaa, "poster_url": poster_url}
+
+
+def collect_analog_titles(max_per_slot: int = 8) -> list[str]:
+    """Titles shown as historical slot competition in the UI."""
+    from datetime import date
+
+    weekends_path = RAW_DIR / "weekends.json"
+    if not weekends_path.exists():
+        return []
+
+    raw = json.loads(weekends_path.read_text())
+    by_woy: dict[int, list[tuple[int, str, int]]] = {}
+    for w in raw.get("weekends", []):
+        woy = date.fromisoformat(w["friday"]).isocalendar()[1]
+        for entry in w.get("entries", []):
+            if entry.get("is_wide") and entry.get("weeks_in_release", 99) <= 1:
+                gross = entry.get("gross", 0)
+                by_woy.setdefault(woy, []).append((w["year"], entry["title"], gross))
+
+    titles: set[str] = set()
+    for entries in by_woy.values():
+        seen: set[str] = set()
+        ranked = sorted(entries, key=lambda item: (item[0], item[2]), reverse=True)
+        for _, title, _ in ranked:
+            if title in seen:
+                continue
+            seen.add(title)
+            titles.add(title)
+            if len(seen) >= max_per_slot:
+                break
+    return sorted(titles)
+
+
+def enrich_analog_titles(delay: float = REQUEST_DELAY) -> dict:
+    """Ensure metadata exists for films used as historical slot competition."""
+    CACHE_DIR.mkdir(parents=True, exist_ok=True)
+    meta_path = CACHE_DIR / "film_metadata.json"
+    metadata: dict = json.loads(meta_path.read_text()) if meta_path.exists() else {}
+
+    pending = [
+        title
+        for title in collect_analog_titles()
+        if title not in metadata or not metadata[title].get("genres") or not metadata[title].get("poster_url")
+    ]
+    print(f"  analog titles to enrich: {len(pending)}")
+
+    for i, title in enumerate(pending, start=1):
+        existing = metadata.get(title, {})
+        imdb_id = existing.get("imdb_id")
+        if not imdb_id:
+            imdb_id = _search_imdb_id(title)
+            time.sleep(delay)
+
+        genres = existing.get("genres", [])
+        mpaa = existing.get("mpaa_rating")
+        poster_url = existing.get("poster_url")
+
+        if imdb_id:
+            try:
+                fetched = _fetch_title_metadata(imdb_id)
+                genres = fetched["genres"] or genres
+                mpaa = fetched["mpaa_rating"] or mpaa
+                poster_url = fetched.get("poster_url") or poster_url
+            except Exception as exc:  # noqa: BLE001
+                print(f"  metadata fail {title}: {exc}")
+            time.sleep(delay)
+
+        metadata[title] = {
+            "title": title,
+            "slug": _slug(title),
+            "imdb_id": imdb_id,
+            "genres": genres,
+            "mpaa_rating": mpaa,
+            "poster_url": poster_url,
+        }
+        if i % 20 == 0:
+            meta_path.write_text(json.dumps(metadata, indent=2))
+            print(f"  analog enriched {i}/{len(pending)}")
+
+    meta_path.write_text(json.dumps(metadata, indent=2))
+    return metadata
 
 
 def enrich_films(max_titles: int | None = None, delay: float = REQUEST_DELAY) -> dict:
@@ -119,12 +220,14 @@ def enrich_films(max_titles: int | None = None, delay: float = REQUEST_DELAY) ->
 
         genres: list[str] = upcoming_by_title.get(title, {}).get("genres", [])
         mpaa = upcoming_by_title.get(title, {}).get("mpaa_rating")
+        poster_url = None
 
         if imdb_id:
             try:
                 fetched = _fetch_title_metadata(imdb_id)
                 genres = fetched["genres"] or genres
                 mpaa = fetched["mpaa_rating"] or mpaa
+                poster_url = fetched.get("poster_url")
             except Exception as exc:  # noqa: BLE001
                 print(f"  metadata fail {title}: {exc}")
             time.sleep(delay)
@@ -135,6 +238,7 @@ def enrich_films(max_titles: int | None = None, delay: float = REQUEST_DELAY) ->
             "imdb_id": imdb_id,
             "genres": genres,
             "mpaa_rating": mpaa,
+            "poster_url": poster_url,
         }
         if i % 20 == 0:
             meta_path.write_text(json.dumps(metadata, indent=2))

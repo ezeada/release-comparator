@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import re
+import time
 from datetime import date, datetime, timedelta
 from pathlib import Path
 
@@ -26,15 +27,17 @@ GENRE_PATTERN = re.compile(
     r"Sport|Thriller|War|Western)$"
 )
 
+REQUEST_DELAY = 0.3
+
 
 def _weekend_friday(release_day: date) -> str:
     """Map release date to the Fri–Sun weekend it opens in."""
     weekday = release_day.weekday()
-    if weekday == 4:  # Friday
+    if weekday == 4:  # Fri
         return release_day.isoformat()
-    if weekday == 5:  # Saturday -> treat as that weekend's Friday
+    if weekday == 5:  # Sat
         return (release_day - timedelta(days=1)).isoformat()
-    if weekday == 6:  # Sunday
+    if weekday == 6:  # Sun
         return (release_day - timedelta(days=2)).isoformat()
     # Mon-Thu: upcoming weekend
     days_until_friday = (4 - weekday) % 7
@@ -50,17 +53,36 @@ def _parse_release_cell(text: str) -> tuple[str, list[str]]:
     return title, genres
 
 
-def scrape_upcoming(months_ahead: int = 12) -> list[dict]:
-    RAW_DIR.mkdir(parents=True, exist_ok=True)
-    url = "https://www.boxofficemojo.com/calendar/"
-    resp = requests.get(url, headers=HEADERS, timeout=30)
-    resp.raise_for_status()
-    soup = BeautifulSoup(resp.text, "lxml")
+def _month_start_dates(start: date, months: int) -> list[date]:
+    """First day of each month from start month through `months` total."""
+    dates: list[date] = []
+    year, month = start.year, start.month
+    for _ in range(months):
+        dates.append(date(year, month, 1))
+        month += 1
+        if month > 12:
+            month = 1
+            year += 1
+    return dates
+
+
+def _calendar_url(month_start: date) -> str:
+    return f"https://www.boxofficemojo.com/calendar/{month_start.year}-{month_start.month:02d}-01/"
+
+
+def _extract_imdb_id(row) -> str | None:
+    for link in row.find_all("a", href=True):
+        match = re.search(r"(tt\d+)", link["href"])
+        if match:
+            return match.group(1)
+    return None
+
+
+def _parse_calendar_page(soup: BeautifulSoup, cutoff: date) -> list[dict]:
     table = soup.find("table")
     if not table:
-        raise RuntimeError("Could not find calendar table on Box Office Mojo")
+        return []
 
-    cutoff = date.today() + timedelta(days=months_ahead * 31)
     releases: list[dict] = []
     current_date: date | None = None
 
@@ -77,7 +99,7 @@ def scrape_upcoming(months_ahead: int = 12) -> list[dict]:
         cells = row.find_all("td")
         if len(cells) != 3 or current_date is None:
             continue
-        if current_date > cutoff:
+        if current_date > cutoff or current_date < date.today() - timedelta(days=7):
             continue
 
         title, genres = _parse_release_cell(cells[0].get_text("\n", strip=True))
@@ -86,18 +108,7 @@ def scrape_upcoming(months_ahead: int = 12) -> list[dict]:
         if scale != "Wide" or not title:
             continue
 
-        imdb_id = None
-        for link in cells[0].find_all("a", href=True):
-            match = re.search(r"tt\d+", link["href"])
-            if match:
-                imdb_id = match.group(0)
-                break
-        if not imdb_id:
-            for link in row.find_all("a", href=True):
-                match = re.search(r"tt\d+", link["href"])
-                if match:
-                    imdb_id = match.group(0)
-                    break
+        imdb_id = _extract_imdb_id(row)
 
         releases.append(
             {
@@ -111,7 +122,38 @@ def scrape_upcoming(months_ahead: int = 12) -> list[dict]:
                 "mpaa_rating": None,
             }
         )
+    return releases
 
+
+def scrape_upcoming(months_ahead: int = 12) -> list[dict]:
+    RAW_DIR.mkdir(parents=True, exist_ok=True)
+    today = date.today()
+    cutoff = today + timedelta(days=months_ahead * 31)
+    month_dates = _month_start_dates(today.replace(day=1), months_ahead + 1)
+
+    seen: set[tuple[str, str]] = set()
+    releases: list[dict] = []
+
+    for month_start in month_dates:
+        url = _calendar_url(month_start)
+        try:
+            resp = requests.get(url, headers=HEADERS, timeout=30)
+            resp.raise_for_status()
+            page_releases = _parse_calendar_page(BeautifulSoup(resp.text, "lxml"), cutoff)
+            added = 0
+            for item in page_releases:
+                key = (item["title"], item["release_date"])
+                if key in seen:
+                    continue
+                seen.add(key)
+                releases.append(item)
+                added += 1
+            print(f"  calendar {month_start.strftime('%Y-%m')}: +{added} wide (total {len(releases)})")
+        except Exception as exc:  # noqa: BLE001
+            print(f"  calendar {month_start.strftime('%Y-%m')}: skip ({exc})")
+        time.sleep(REQUEST_DELAY)
+
+    releases.sort(key=lambda item: item["release_date"])
     out = RAW_DIR / "upcoming.json"
     out.write_text(json.dumps(releases, indent=2))
     print(f"  calendar: {len(releases)} wide releases through ~{months_ahead} months")

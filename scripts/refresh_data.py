@@ -33,18 +33,23 @@ def main() -> None:
 
     print("Slate Setter — data refresh")
     if not args.skip_weekends:
-        print("[1/4] Scraping historical weekends…")
+    print("[1/5] Scraping historical weekends…")
         scrape_weekends(start_year=start_year, end_year=args.end_year)
     else:
-        print("[1/4] Skipping weekend scrape")
+        print("[1/5] Skipping weekend scrape")
 
-    print("[2/4] Scraping upcoming wide releases…")
+    print("[2/5] Scraping upcoming wide releases…")
     scrape_upcoming(months_ahead=12)
 
-    print("[3/4] Enriching film metadata…")
+    print("[3/5] Enriching film metadata…")
     enrich_films(max_titles=args.max_films)
 
-    print("[4/4] Building processed bundle…")
+    print("[4/5] Enriching historical analog titles…")
+    from enrich_films import enrich_analog_titles  # noqa: E402
+
+    enrich_analog_titles()
+
+    print("[5/5] Building processed bundle…")
     build_processed()
     print("Done. Commit docs/data/slate_setter.json and push for GitHub Pages.")
 

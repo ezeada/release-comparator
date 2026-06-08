@@ -3,104 +3,182 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Slate Setter — Release Weekend Intelligence</title>
+  <title>Release Ranking — Release Weekend Intelligence</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <div class="app">
-    <header class="header">
-      <div class="brand">
-        <span class="brand-mark"></span>
+  <div class="app-shell">
+    <aside class="app-nav">
+      <div class="nav-brand">
+        <span class="nav-logo" aria-hidden="true">RR</span>
         <div>
-          <h1>Slate Setter</h1>
-          <p class="tagline">Domestic release weekend intelligence</p>
+          <p class="nav-eyebrow">Release Ranking</p>
         </div>
       </div>
-      <button type="button" class="ghost-btn" id="params-btn" aria-expanded="false">
-        Scoring parameters
-      </button>
-    </header>
 
-    <aside class="params-panel hidden" id="params-panel" aria-label="Scoring parameters">
-      <h2>How weekends are scored</h2>
-      <p class="muted">Composite score (0–100) from five factors. Weights below drive the overall rank.</p>
-      <ul class="weight-list" id="weight-list"></ul>
-      <dl class="assumptions">
-        <dt>Holdover assumption</dt>
-        <dd id="param-holdover">—</dd>
-        <dt>Wide release threshold</dt>
-        <dd id="param-wide">—</dd>
-        <dt>Historical window</dt>
-        <dd id="param-history">—</dd>
-        <dt>Data refreshed</dt>
-        <dd id="param-refreshed">—</dd>
-        <dt>Data quality</dt>
-        <dd id="param-quality">—</dd>
-      </dl>
+      <section class="nav-block">
+        <p class="nav-label">Film Information</p>
+        <div class="form-stack">
+          <label class="field-label">
+            <span>Title</span>
+            <input type="text" id="film-title" placeholder="Optional" autocomplete="off" />
+          </label>
+          <label class="field-label">
+            <span>Primary genre</span>
+            <select id="film-genre"></select>
+          </label>
+          <label class="field-label">
+            <span>MPAA rating</span>
+            <select id="film-rating"></select>
+          </label>
+        </div>
+        <div class="form-actions">
+          <label class="compare-toggle">
+            <input type="checkbox" id="compare-mode" />
+            <span class="compare-toggle-text">
+              Compare mode<br />
+              <span class="compare-toggle-sub">(select 2 weekends)</span>
+            </span>
+          </label>
+          <button type="button" class="primary-btn" id="rank-btn">Rank weekends</button>
+        </div>
+      </section>
+
+      <button type="button" class="nav-item" id="params-btn" aria-expanded="false">
+        <span>Scoring parameters</span>
+        <span class="nav-chevron">›</span>
+      </button>
+
+      <aside class="params-panel hidden" id="params-panel" aria-label="Scoring parameters">
+        <p class="muted params-intro">Adjust weights and assumptions. Rankings update automatically.</p>
+        <section class="params-section">
+          <h3>Factor weights</h3>
+          <div class="param-sliders" id="weight-sliders"></div>
+        </section>
+        <section class="params-section">
+          <h3>Assumptions</h3>
+          <div class="param-sliders">
+            <label class="param-slider">
+              <span class="param-slider-label">
+                <span>Holdover</span>
+                <span class="param-inline-value"><output id="holdover-out">5</output> wks</span>
+              </span>
+              <input type="range" id="param-holdover" min="1" max="8" step="1" value="5" />
+            </label>
+            <label class="param-slider">
+              <span class="param-slider-label">Wide threshold <output id="wide-out">600</output></span>
+              <input type="range" id="param-wide" min="300" max="1200" step="50" value="600" />
+            </label>
+            <label class="param-slider">
+              <span class="param-slider-label">History</span>
+              <div class="param-history-years">
+                <select id="param-history-min" aria-label="History start year"></select>
+                <span aria-hidden="true">–</span>
+                <select id="param-history-max" aria-label="History end year"></select>
+              </div>
+            </label>
+          </div>
+        </section>
+        <dl class="assumptions params-meta">
+          <dt>Refreshed</dt>
+          <dd id="param-refreshed">—</dd>
+          <dt>Quality</dt>
+          <dd id="param-quality">—</dd>
+        </dl>
+        <button type="button" class="ghost-btn ghost-btn-sm" id="params-reset">Reset defaults</button>
+      </aside>
+
+      <section class="nav-block nav-block-scroll">
+        <p class="nav-label">Badge Key</p>
+        <ul class="legend-list">
+          <li>
+            <span class="badge badge-mid">Holiday</span>
+            <span class="legend-desc">Calendar event that lifts box office</span>
+          </li>
+          <li>
+            <span class="badge badge-good">~$165M avg market</span>
+            <span class="legend-desc">Historical total market for week-of-year</span>
+          </li>
+          <li>
+            <span class="badge badge-mid">~$12M genre market</span>
+            <span class="legend-desc">In-genre performance for this slot</span>
+          </li>
+          <li>
+            <span class="badge badge-bad">Unconfirmed schedule</span>
+            <span class="legend-desc">No confirmed wide releases yet</span>
+          </li>
+          <li>
+            <span class="badge badge-mid">5 wide releases</span>
+            <span class="legend-desc">Projected wide releases in market (≤3 strong · 4–5 mixed · 6+ weak)</span>
+          </li>
+          <li>
+            <span class="badge badge-good">0 overlapping titles</span>
+            <span class="legend-desc">Same genre and MPAA rating in market</span>
+          </li>
+        </ul>
+        <div class="legend-colors">
+          <span class="legend-colors-label">Tint</span>
+          <span class="badge badge-good">Strong</span>
+          <span class="badge badge-mid">Mixed</span>
+          <span class="badge badge-bad">Weak</span>
+        </div>
+      </section>
     </aside>
 
-    <section class="film-form card">
-      <h2>Your film</h2>
-      <div class="form-grid">
-        <label>
-          Title <span class="optional">(optional)</span>
-          <input type="text" id="film-title" placeholder="e.g. Undertone" autocomplete="off" />
-        </label>
-        <label>
-          Primary genre
-          <select id="film-genre" required></select>
-        </label>
-        <label>
-          MPAA rating
-          <select id="film-rating" required></select>
-        </label>
-      </div>
-      <div class="form-actions">
-        <button type="button" class="primary-btn" id="rank-btn">Rank weekends</button>
-        <label class="compare-toggle">
-          <input type="checkbox" id="compare-mode" />
-          Compare mode <span class="muted">(pick 2 weekends)</span>
-        </label>
-      </div>
-    </section>
+    <main class="app-main">
+      <header class="main-header">
+        <div>
+          <h1 class="main-title">
+            Weekend Rankings
+            <span class="count-badge hidden" id="rank-count" aria-label="Weekend count"></span>
+          </h1>
+        </div>
+        <p class="results-range muted" id="results-summary">Select genre and rating to rank upcoming weekends.</p>
+      </header>
 
-    <div class="view-tabs">
-      <button type="button" class="tab active" data-view="ranked">Ranked list</button>
-      <button type="button" class="tab" data-view="calendar">Calendar</button>
-    </div>
+      <section class="compare-panel panel hidden" id="compare-panel">
+        <h2 class="panel-title">Weekend comparison</h2>
+        <div class="compare-date-row">
+          <label class="rank-date-field">
+            <span>Weekend A</span>
+            <input type="date" id="compare-date-a" />
+          </label>
+          <label class="rank-date-field">
+            <span>Weekend B</span>
+            <input type="date" id="compare-date-b" />
+          </label>
+        </div>
+        <div class="compare-columns" id="compare-columns"></div>
+      </section>
 
-    <section class="results card" id="ranked-view">
-      <div class="results-header">
-        <h2>Weekend rankings</h2>
-        <p class="muted" id="results-summary">Configure your film to see ranked release weekends.</p>
-      </div>
-      <div class="ranked-list" id="ranked-list"></div>
-    </section>
+      <section class="results-panel panel" id="ranked-view">
+        <div class="toolbar-card" id="rank-range-panel">
+          <p class="toolbar-label">Date range</p>
+          <div class="rank-range-dates">
+            <label class="rank-date-field">
+              <span>From</span>
+              <input type="date" id="range-date-start" />
+            </label>
+            <label class="rank-date-field">
+              <span>To</span>
+              <input type="date" id="range-date-end" />
+            </label>
+          </div>
+        </div>
 
-    <section class="results card hidden" id="calendar-view">
-      <div class="results-header">
-        <h2>12-month calendar</h2>
-        <p class="muted">Color intensity reflects composite score for your film.</p>
-      </div>
-      <div class="calendar-legend">
-        <span>Lower score</span>
-        <span class="legend-bar"></span>
-        <span>Higher score</span>
-      </div>
-      <div class="calendar-grid" id="calendar-grid"></div>
-    </section>
+        <div class="rankings-split" id="rankings-split">
+          <div class="ranked-list" id="ranked-list"></div>
+          <aside class="weekend-detail-panel" id="detail-panel" aria-label="Weekend details">
+            <div class="empty-state">Select a weekend to view score breakdown and competition.</div>
+          </aside>
+        </div>
+      </section>
 
-    <section class="compare-panel card hidden" id="compare-panel">
-      <h2>Weekend comparison</h2>
-      <div class="compare-columns" id="compare-columns"></div>
-    </section>
-
-    <footer class="footer">
-      <p>US domestic · Fri–Sun weekends · Cached industry data · Not affiliated with any studio</p>
-    </footer>
+      <p class="main-footer muted">US domestic · Fri–Sun · Not affiliated with any studio</p>
+    </main>
   </div>
 
   <script type="module" src="js/app.js"></script>

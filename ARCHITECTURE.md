@@ -2,7 +2,7 @@
 
 ## Overview
 
-Slate Setter is a **static-first** web app: all ranking runs in the browser against a pre-built JSON bundle. Python handles data acquisition and refresh; there is no runtime server in production.
+Release Ranking is a **static-first** web app: all ranking runs in the browser against a pre-built JSON bundle. Python handles data acquisition and refresh; there is no runtime server in production.
 
 ```
 ┌─────────────────────┐     refresh (local/CI)      ┌──────────────────┐
@@ -20,14 +20,17 @@ Slate Setter is a **static-first** web app: all ranking runs in the browser agai
 └─────────────────────┘                               └──────────────────┘
 ```
 
-## Why static?
+## Technical choices
+
+See [TRADEOFFS.md](TRADEOFFS.md) for the full decision log. At a high level:
 
 | Choice | Rationale |
 |--------|-----------|
-| GitHub Pages hosting | User requirement; zero ops cost |
-| Client-side ranking | Instant re-rank when genre/rating changes; no API to maintain |
-| Flat JSON | Simple to inspect, diff, and refresh on a 3-week cadence |
-| Python scrapers | Best ecosystem for HTML parsing; not shipped to production |
+| Client-side ranking | Instant re-rank when genre/rating or parameters change; no API to maintain |
+| Flat JSON bundle | Simple to inspect, diff, and refresh on a ~3-week cadence |
+| No frontend framework | Faster to ship polished CSS; smaller payload on Pages |
+
+Data acquisition runs offline via `scripts/*.py` (not shipped to the browser). The live app is static HTML/JS/CSS deployed from `/docs`.
 
 ## Data pipeline
 
@@ -69,17 +72,17 @@ Pure functions, no dependencies. For each candidate weekend:
 1. **market_strength** — percentile of slot median total gross vs all slots.
 2. **genre_strength** — percentile of genre median gross in that slot.
 3. **calendar_boost** — mapped from holiday/event table (`scripts/holidays.py`).
-4. **crowding** — decreases as wide active count rises.
-5. **audience_overlap** — inverted overlap score; genre weighted 3× vs rating.
+4. **crowding** — decreases as wide active count rises; UI label reads low / moderate / high competition by score band.
+5. **audience_overlap** — inverted overlap score; counts films matching **both** user genre and MPAA rating.
 
 Composite = weighted sum (weights in JSON config, surfaced in UI).
 
 ## UI (`docs/`)
 
 - Single page, CSS custom properties, no framework (fast load on Pages).
-- **Ranked list** — primary workflow; expand for detail.
-- **Calendar** — secondary heatmap; click syncs with list.
-- **Compare mode** — two selections, side-by-side factors.
+- **Ranked list** — primary workflow; select a weekend for detail.
+- **Compare mode** — two weekends, side-by-side factors with winner tags.
+- **Scoring parameters** — adjustable weights and assumptions; re-ranks in browser.
 
 ## Refresh cadence
 
@@ -100,13 +103,12 @@ GitHub Actions redeploys Pages automatically.
 |-------|------------|
 | BOM HTML changes | Scrape scripts fail loudly; last good JSON remains live |
 | Missing genre/rating | Film still listed; overlap scoring degrades gracefully |
-| The Numbers 403 | We use BOM calendar instead for wide schedules |
-| Stale holdover projection | Labeled “est.” in UI; 5-week assumption documented |
 
 ## v2 directions
 
 - Limited → wide expansion tracking
-- User-adjustable factor weights
+- Persisted scoring-parameter presets
 - Genre-specific holdover decay curves
 - International territories
-- “Compare two weekends” export / share link via URL hash
+- Studio / distributor filters on the competitive slate
+- Shareable compare links via URL hash

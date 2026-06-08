@@ -63,6 +63,7 @@ def build_processed() -> None:
 
     # Historical slot aggregates (by week-of-year)
     slot_totals: dict[int, list[int]] = defaultdict(list)
+    slot_wide_counts: dict[int, list[int]] = defaultdict(list)
     slot_genre_gross: dict[int, dict[str, list[int]]] = defaultdict(lambda: defaultdict(list))
 
     historical_weekends = []
@@ -70,6 +71,7 @@ def build_processed() -> None:
         friday = w["friday"]
         woy = _week_of_year(friday)
         slot_totals[woy].append(w["total_gross"])
+        slot_wide_counts[woy].append(w["wide_release_count"])
 
         enriched_entries = []
         for entry in w["entries"]:
@@ -119,8 +121,10 @@ def build_processed() -> None:
                 "median_gross": g_sorted[len(g_sorted) // 2],
                 "sample_size": len(grosses),
             }
+        wide_counts = sorted(slot_wide_counts[woy])
         historical_slots[str(woy)] = {
             "median_total_gross": median,
+            "median_wide_count": wide_counts[len(wide_counts) // 2] if wide_counts else 0,
             "sample_weekends": len(totals),
             "genre_stats": genre_stats,
         }
@@ -132,12 +136,15 @@ def build_processed() -> None:
         for entry in latest["entries"]:
             if entry["is_wide"] and entry["weeks_in_release"] >= 1:
                 open_friday = _add_weeks(latest["friday"], -(entry["weeks_in_release"] - 1))
+                meta = metadata.get(entry["title"], {})
                 current_holdovers.append(
                     {
                         "title": entry["title"],
                         "opening_friday": open_friday,
                         "genres": entry["genres"],
                         "mpaa_rating": entry["mpaa_rating"],
+                        "imdb_id": meta.get("imdb_id"),
+                        "poster_url": meta.get("poster_url"),
                         "weeks_in_release_at_anchor": entry["weeks_in_release"],
                         "anchor_friday": latest["friday"],
                     }
@@ -154,16 +161,66 @@ def build_processed() -> None:
             candidate_fridays.append(friday.isoformat())
         cursor += timedelta(days=7)
 
+    poster_lookup: dict[str, str] = {}
+    for title, meta in metadata.items():
+        url = meta.get("poster_url")
+        if not url:
+            continue
+        poster_lookup[title] = url
+        if meta.get("imdb_id"):
+            poster_lookup[meta["imdb_id"]] = url
+
     scheduled = []
     for item in upcoming:
+        film_meta = metadata.get(item["title"], {})
         scheduled.append(
             {
                 **item,
-                "genres": item.get("genres") or metadata.get(item["title"], {}).get("genres", []),
-                "mpaa_rating": item.get("mpaa_rating")
-                or metadata.get(item["title"], {}).get("mpaa_rating"),
+                "genres": item.get("genres") or film_meta.get("genres", []),
+                "mpaa_rating": item.get("mpaa_rating") or film_meta.get("mpaa_rating"),
+                "poster_url": film_meta.get("poster_url"),
             }
         )
+
+    def _film_payload(film: dict, **extra) -> dict:
+        meta = metadata.get(film.get("title", ""), {})
+        return {
+            "title": film.get("title"),
+            "genres": film.get("genres") or meta.get("genres", []),
+            "mpaa_rating": film.get("mpaa_rating") or meta.get("mpaa_rating"),
+            "imdb_id": film.get("imdb_id") or meta.get("imdb_id"),
+            "poster_url": film.get("poster_url") or meta.get("poster_url"),
+            **extra,
+        }
+
+    def historical_analog_competition(week_of_year: int) -> list[dict]:
+        """Wide openers that historically landed in this week-of-year slot."""
+        seen: set[str] = set()
+        analogs: list[dict] = []
+        for w in sorted(historical_weekends, key=lambda item: item["year"], reverse=True):
+            if w["week_of_year"] != week_of_year:
+                continue
+            for entry in w["entries"]:
+                if not entry["is_wide"] or entry["weeks_in_release"] > 1:
+                    continue
+                if entry["title"] in seen:
+                    continue
+                seen.add(entry["title"])
+                analogs.append(
+                    _film_payload(
+                        entry,
+                        week_in_release=1,
+                        source="historical_analog",
+                        is_new_release=True,
+                        holdover_estimated=False,
+                        analog_year=w["year"],
+                        analog_gross=entry["gross"],
+                    )
+                )
+            if len(analogs) >= 8:
+                break
+        analogs.sort(key=lambda item: item.get("analog_gross", 0), reverse=True)
+        return analogs[:8]
 
     def active_films_for_weekend(friday_iso: str) -> list[dict]:
         active: list[dict] = []
@@ -174,15 +231,13 @@ def build_processed() -> None:
             weeks_out = (friday - open_date).days // 7
             if 0 <= weeks_out < HOLDOVER_WEEKS:
                 active.append(
-                    {
-                        "title": film["title"],
-                        "genres": film["genres"],
-                        "mpaa_rating": film["mpaa_rating"],
-                        "week_in_release": weeks_out + 1,
-                        "source": "current_holdover",
-                        "is_new_release": weeks_out == 0,
-                        "holdover_estimated": friday > date.fromisoformat(film["anchor_friday"]),
-                    }
+                    _film_payload(
+                        film,
+                        week_in_release=weeks_out + 1,
+                        source="current_holdover",
+                        is_new_release=weeks_out == 0,
+                        holdover_estimated=friday > date.fromisoformat(film["anchor_friday"]),
+                    )
                 )
 
         for film in scheduled:
@@ -190,15 +245,13 @@ def build_processed() -> None:
             weeks_out = (friday - open_date).days // 7
             if 0 <= weeks_out < HOLDOVER_WEEKS:
                 active.append(
-                    {
-                        "title": film["title"],
-                        "genres": film.get("genres", []),
-                        "mpaa_rating": film.get("mpaa_rating"),
-                        "week_in_release": weeks_out + 1,
-                        "source": "scheduled",
-                        "is_new_release": weeks_out == 0,
-                        "holdover_estimated": weeks_out > 0,
-                    }
+                    _film_payload(
+                        film,
+                        week_in_release=weeks_out + 1,
+                        source="scheduled",
+                        is_new_release=weeks_out == 0,
+                        holdover_estimated=weeks_out > 0,
+                    )
                 )
         return active
 
@@ -210,13 +263,17 @@ def build_processed() -> None:
     for friday_iso in candidate_fridays:
         woy = _week_of_year(friday_iso)
         slot = historical_slots.get(str(woy), {})
+        scheduled_comp = active_films_for_weekend(friday_iso)
+        analog_comp = historical_analog_competition(woy)
         future_weekends.append(
             {
                 "friday": friday_iso,
                 "week_of_year": woy,
                 "historical_slot": slot,
                 "events": holidays.get(friday_iso, []),
-                "competition": active_films_for_weekend(friday_iso),
+                "competition": scheduled_comp,
+                "historical_competition": analog_comp,
+                "competition_is_estimated": len(scheduled_comp) == 0,
             }
         )
 
@@ -225,6 +282,26 @@ def build_processed() -> None:
     meta_with_rating = sum(1 for m in metadata.values() if m.get("mpaa_rating"))
     scheduled_with_genre = sum(1 for s in scheduled if s.get("genres"))
     scheduled_with_rating = sum(1 for s in scheduled if s.get("mpaa_rating"))
+
+    historical_wide_openers = []
+    for w in historical_weekends:
+        for entry in w["entries"]:
+            if entry["weeks_in_release"] > 1:
+                continue
+            meta = metadata.get(entry["title"], {})
+            historical_wide_openers.append(
+                {
+                    "title": entry["title"],
+                    "year": w["year"],
+                    "week_of_year": w["week_of_year"],
+                    "genres": entry.get("genres") or meta.get("genres", []),
+                    "mpaa_rating": entry.get("mpaa_rating") or meta.get("mpaa_rating"),
+                    "gross": entry.get("gross", 0),
+                    "theaters": entry.get("theaters", 0),
+                    "imdb_id": meta.get("imdb_id"),
+                    "poster_url": meta.get("poster_url"),
+                }
+            )
 
     bundle = {
         "metadata": {
@@ -256,6 +333,9 @@ def build_processed() -> None:
         "historical_slots": historical_slots,
         "future_weekends": future_weekends,
         "scheduled_releases": scheduled,
+        "current_holdovers": current_holdovers,
+        "historical_wide_openers": historical_wide_openers,
+        "poster_lookup": poster_lookup,
     }
 
     out_path = PROCESSED_DIR / "slate_setter.json"

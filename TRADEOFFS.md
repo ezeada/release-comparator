@@ -1,16 +1,14 @@
 # Tradeoffs
 
-Documenting what we prioritized, what we cut, and why — for a ~3–6 hour build window.
-
 ## Product
 
 | Decision | Chose | Over | Why |
 |----------|-------|------|-----|
-| Primary view | Ranked list + expand | Calendar-first | Matches “narrow down dates” workflow |
 | Score type | Composite + factor bars | Predicted opening gross | Honest without a forecasting model; still actionable |
-| Overlap signal | Genre + MPAA | Comps / demos | Team question #1; shippable v1 |
+| Overlap signal | Genre **and** MPAA (both required) | Comps / demos / genre-only | Matches “same audience” more tightly; e.g. Horror+R vs Horror+R, not Horror+PG-13 |
 | Holdover | 5-week default (future) | Per-title ML decay | Team question #2; labeled as estimated |
 | One film at a time | Yes | Slate planner | Scope for take-home |
+| Studio lens | Title-level wide slate | Major-studio groupings | Prompt mentions tracking major studios; v1 lists all wide releases with genre/rating overlap — no Universal vs. Sony rollup (v2) |
 
 ## Data
 
@@ -18,7 +16,6 @@ Documenting what we prioritized, what we cut, and why — for a ~3–6 hour buil
 |----------|-------|------|-----|
 | Wide only (600+) | Yes | Limited releases | Clear signal; limited→wide is v2 |
 | BOM for schedules | Yes | The Numbers | The Numbers returned 403 in scraping; BOM calendar has Wide/Limited |
-| 10-year history | Target | 5-year | User preference; `--quick` for dev |
 | Cached JSON | Yes | Live scrape in app | GitHub Pages is static; scraping in browser is impossible |
 | Imperfect metadata | Transparent gaps | Block until complete | 100% coverage isn’t realistic without paid APIs |
 
@@ -26,19 +23,9 @@ Documenting what we prioritized, what we cut, and why — for a ~3–6 hour buil
 
 | Decision | Chose | Over | Why |
 |----------|-------|------|-----|
-| Static site on Pages | Yes | FastAPI hosted | User asked for GitHub Pages |
 | Client-side ranking | Yes | Python API | Instant interaction; no server |
 | Flat files | Yes | SQLite | Refresh rebuilds whole bundle; simple deploy |
-| Python scrapers | Yes | Node scrapers | pandas/BS4/boxoffice-api ecosystem |
 | No frontend framework | Yes | React | Faster to ship polished CSS; smaller payload |
-
-## UI / branding
-
-| Decision | Chose | Over | Why |
-|----------|-------|------|-----|
-| Dark, minimal | Yes | Studio-branded | “Sleek and practical” without A24 marks |
-| Parameters panel | Yes | Hidden magic | Reviewers asked for product thinking visibility |
-| Compare mode | Yes | — | High value for release strategists, low build cost |
 
 ## Known limitations
 
@@ -51,7 +38,7 @@ Documenting what we prioritized, what we cut, and why — for a ~3–6 hour buil
 ## If we had another week
 
 1. Limited-release → wide expansion from BOM calendar deltas
-2. Adjustable weights in UI with persistence
+2. Persist scoring-parameter presets per user
 3. Export PDF / one-pager for internal meetings
 4. Email digest when a high-overlap wide release moves into a candidate weekend
 5. TMDB integration for audience keywords if team confirms overlap model
