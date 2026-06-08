@@ -8,7 +8,7 @@
 | Overlap signal | Genre **and** MPAA (both required) | Comps / demos / genre-only | Matches “same audience” more tightly; e.g. Horror+R vs Horror+R, not Horror+PG-13 |
 | Holdover | 5-week default (future) | Per-title ML decay | Team question #2; labeled as estimated |
 | One film at a time | Yes | Slate planner | Scope for take-home |
-| Studio lens | Title-level wide slate | Major-studio groupings | Prompt mentions tracking major studios; v1 lists all wide releases with genre/rating overlap — no Universal vs. Sony rollup (v2) |
+| Studio lens | Title-level wide slate | Major-studio groupings | Prompt mentions tracking major studios; this lists all wide releases with genre/rating overlap — for example: no Universal vs. Sony |
 
 ## Data
 
@@ -25,7 +25,6 @@
 |----------|-------|------|-----|
 | Client-side ranking | Yes | Python API | Instant interaction; no server |
 | Flat files | Yes | SQLite | Refresh rebuilds whole bundle; simple deploy |
-| No frontend framework | Yes | React | Faster to ship polished CSS; smaller payload |
 
 ## Known limitations
 
@@ -34,11 +33,3 @@
 3. **Calendar events are rule-based** — Oscar date approximated as 2nd Sunday in March; good enough for boost scoring, not legal scheduling.
 4. **No user accounts / saved slates** — static demo; URL hash could add shareable state later.
 5. **Full metadata enrichment is slow** — first full scrape may cap `--max-films`; re-run without cap overnight for better coverage.
-
-## If we had another week
-
-1. Limited-release → wide expansion from BOM calendar deltas
-2. Persist scoring-parameter presets per user
-3. Export PDF / one-pager for internal meetings
-4. Email digest when a high-overlap wide release moves into a candidate weekend
-5. TMDB integration for audience keywords if team confirms overlap model
