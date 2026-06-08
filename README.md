@@ -4,7 +4,7 @@ Enter your film's genre and MPAA rating, get a ranked list of domestic Fri–Sun
 
 ## What it does
 
-1. Configure your film — primary genre + MPAA rating (title optional).
+1. Enter film information — primary genre + MPAA rating (title optional).
 2. Rank weekends — composite release score with badges for market size, holidays, crowding, and audience overlap.
 3. Weekend detail — factor breakdown, competitive landscape (scheduled wide releases + projected holdovers), and historical analogs when the schedule is thin.
 4. Compare mode — pick two weekends (from the list or date fields) for side-by-side scores with winner tags per factor.
@@ -20,38 +20,6 @@ There aren't reliable public APIs for this — the pipeline uses web scraping an
 | [The Numbers](https://www.the-numbers.com) | Wide release schedules (prompt suggestion) | Attempted; site returned 403 during scraping, so wide schedules come from BOM's calendar instead (documented in [TRADEOFFS.md](TRADEOFFS.md)) |
 
 We track individual wide-release titles, not studio-level rollups. Major-studio grouping is out of scope for v1 — see [TRADEOFFS.md](TRADEOFFS.md).
-
-## Quick start (local)
-
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-
-# Serve the static app (after data exists)
-python -m http.server 8080 --directory docs
-# Open http://localhost:8080
-```
-
-## Refresh data (~every 3 weeks)
-
-```bash
-source .venv/bin/activate
-
-# Full refresh (~30–60 min first run; all years in scrape config)
-python scripts/refresh_data.py
-
-# Faster dev refresh (shorter history window, capped metadata)
-python scripts/refresh_data.py --quick --max-films 300
-```
-
-This writes `docs/data/slate_setter.json`. Commit and push to update the live site.
-
-## GitHub Pages setup
-
-1. Push repo to GitHub.
-2. Settings → Pages → Build and deployment → Source: GitHub Actions.
-3. Push to `main` — the workflow in `.github/workflows/pages.yml` deploys `/docs`.
 
 ## Scoring (v1)
 
@@ -104,16 +72,3 @@ scripts/              # Python scrape + build pipeline
 data/raw/             # Scrape cache (gitignored; regenerated)
 data/processed/       # Built JSON bundle (gitignored; copied to docs/)
 ```
-
-## Questions for the distribution team
-
-We're validating these assumptions:
-
-1. Is genre + MPAA rating sufficient for "audience overlap," or do you use comps / target demos?
-2. Is a ~5-week holdover reasonable for projecting competition, or genre-specific decay curves?
-3. How stale can scheduled release dates get before the tool misleads planning?
-4. Would studio / distributor filters (e.g. "major studios only") be more useful than an all-wide-release slate?
-
-## License
-
-Take-home project — not affiliated with any studio.
